@@ -62,7 +62,7 @@ const handleSumbitData = async (e) => {
 
     <div> 
       <div className='container-add flex-row justify-self-center ml-72 max-w-md h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
-        <h1 className=' mb-5 font-extrabold text-[#7a68bf] text-3xl'>Add Event</h1>
+        <h1 className='mt-3 mb-8 font-extrabold text-[#7a68bf] text-3xl'>Add Event</h1>
          
          <form onSubmit={handleSumbitData}>
               {/* EVENTNAME */}
