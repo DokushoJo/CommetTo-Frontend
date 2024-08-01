@@ -13,6 +13,7 @@ function App() {
 		<>
 			<div>
 				<div className='flex'>
+<<<<<<< HEAD
 					<div className='h-screen'>
 						<LeftSide/>
 						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
@@ -24,6 +25,11 @@ function App() {
 					</div>
 					<RightSide/>
 	  			</div>
+=======
+					<LeftSide />
+					<RightSide />
+				</div>
+>>>>>>> 357ab1e (feat:List all basic information about events)
 			</div>
 		</>
 	)
