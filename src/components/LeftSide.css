@@ -1,0 +1,16 @@
+.tile-bg {
+    background-color: rgb(18, 18, 18);
+}
+.tile-inner-bg {
+    background-color: rgb(31, 31, 31);
+}
+
+.leftside--width {
+    width: 45rem;
+    max-width: 70rem;
+}
+
+.event-box--height-text-size {
+    height: 30rem;
+    font-size: 100px
+}

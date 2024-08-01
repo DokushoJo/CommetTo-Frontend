@@ -1,22 +1,20 @@
 import { useState } from 'react'
+import "./LeftSide.css"
 
 export default function LeftSide() {
   const [count, setCount] = useState(0)
 
     return (
         <>
-            <div className='w-2/6 border border-white bg-black text-white'>
+            <div className='h-screen flex-col overflow-auto leftside--width bg-black text-white'>
                 Left Side
-                <div className='m-28 mb-20 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>
-                    Search and Tag Box
-                    <div className='m-10 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>Search</div>
-                    <div className='m-10 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>Tags</div>
+                <div className='m-5 mb-20 mt-20 pb-1 rounded-lg tile-bg'>
+                    <div className='m-2'>Search Box</div>
+                    <div className='m-2 rounded-lg tile-inner-bg'>Search</div>
                 </div>
-                <div className='m-28 mb-0 h-60 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>
-                    Events Box
-                </div>
-                <div className='m-28 mb-0 h-28 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>
-                    Add Event Button
+                <div className='m-5 pb-0.5 rounded-lg tile-bg'>
+                    <div className='m-2'>Events Box</div>
+                    <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>Events</div>
                 </div>
             </div>
         </>
