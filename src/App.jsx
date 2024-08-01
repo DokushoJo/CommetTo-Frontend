@@ -7,9 +7,9 @@ import RightSide from './components/RightSide';
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
-  	const [count, setCount] = useState(0)
+	const [count, setCount] = useState(0)
 
-  	return (
+	return (
 		<>
 			<div>
 				<div className='flex'>
@@ -26,7 +26,7 @@ function App() {
 	  			</div>
 			</div>
 		</>
-  	)
+	)
 }
 
 export default App
