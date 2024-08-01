@@ -7,18 +7,18 @@ import RightSide from './components/RightSide';
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
-  	const [count, setCount] = useState(0)
+	const [count, setCount] = useState(0)
 
-  	return (
+	return (
 		<>
 			<div className='dark'>
 				<div className='flex'>
-					<LeftSide/>
-					<RightSide/>
-	  			</div>
+					<LeftSide />
+					<RightSide />
+				</div>
 			</div>
 		</>
-  	)
+	)
 }
 
 export default App
