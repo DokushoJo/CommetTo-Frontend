@@ -66,55 +66,24 @@ const handleSumbitData = async (e) => {
          
          <form onSubmit={handleSumbitData}>
               {/* EVENTNAME */}
-<<<<<<< HEAD
-<<<<<<< HEAD
               <div className="mb-5" > 
                   <h1  className='float-left mb-2'>Name</h1>
-=======
-              <div className="mb-5"> 
->>>>>>> 499d06d (fix: renamed folder to match main repo)
-=======
-              <div className="mb-5" > 
-                  <h1  className='float-left mb-2'>Name</h1>
->>>>>>> ad54d88 (fix: Added label on input name event.)
                   <label htmlFor="event-name"  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"></label>
                   <input type="text" value={addData.name} onChange={e => handleEventsData("name", e)} placeholder="Event Name" id="small-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" />
               </div>
             
               {/* SCHEDULE */}
-<<<<<<< HEAD
-<<<<<<< HEAD
               <div className="mb-5"> 
                   <h1 className='float-left mb-2'>Schedule</h1>
                   <label htmlFor="schedule" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"></label>
                   <input type="text" value={addData.time} onChange={e => handleEventsData("time", e)} placeholder="Date and Time" id="small-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-=======
-              <div className="mb-5"> Schedule
-                  <label htmlFor="schedule" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"></label>
-                  <input type="text" value={addData.time} onChange={e => handleEventsData("time", e)} placeholder="Day and Time" id="small-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
->>>>>>> 499d06d (fix: renamed folder to match main repo)
-=======
-              <div className="mb-5"> 
-                  <h1 className='float-left mb-2'>Schedule</h1>
-                  <label htmlFor="schedule" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"></label>
-                  <input type="text" value={addData.time} onChange={e => handleEventsData("time", e)} placeholder="Date and Time" id="small-input" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
->>>>>>> ad54d88 (fix: Added label on input name event.)
                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" />
               </div>
             
             {/* DECRIPTION */}
-<<<<<<< HEAD
-<<<<<<< HEAD
               <div className="mb-5"> 
                   <h1 className='float-left mb-2'>Description</h1>
-=======
-              <div className="mb-5"> Description
->>>>>>> 499d06d (fix: renamed folder to match main repo)
-=======
-              <div className="mb-5"> 
-                  <h1 className='float-left mb-2'>Description</h1>
->>>>>>> ad54d88 (fix: Added label on input name event.)
                   <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"></label>
                   <textarea type="text" value={addData.description} onChange={e => handleEventsData("description", e)} placeholder="Description" id="small-input" className="bg-gray-50 border h-28 border-gray-300 text-gray-900 text-sm rounded-lg
                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" />
