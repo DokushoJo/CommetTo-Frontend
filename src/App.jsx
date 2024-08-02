@@ -38,11 +38,23 @@ function App() {
 						<div className='absolute flex tile-bg Add-Button--size tile-shadow bottom-0'>
                     		<div className='m-auto'>
 								<div className='m-2 h-12 rounded-lg tile-shadow'>
-										{/* Add Event Button Dialog */}
+											{/* Add Event Button Dialog */}
 									<div className='m-2'>
 										<button onClick={()=>{
 											setDialogContent(<Save />)
 											toggleAdd()	}}> ADD EVENT </button>
+
+										<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
+											if(e.currentTarget === e.target){
+												toggleAdd(); }}}>
+													{dialogContent}</dialog>
+									</div>
+
+										{/* Edit Event Button Dialog */}
+										<div className='m-2'>
+										<button onClick={()=>{
+											setDialogContent(<Edit />)
+											toggleAdd()	}}> EDIT EVENT </button>
 
 										<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
 											if(e.currentTarget === e.target){
