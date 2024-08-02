@@ -11,11 +11,19 @@ function App() {
 
 	return (
 		<>
-			<div className='dark'>
+			<div>
 				<div className='flex'>
-					<LeftSide />
-					<RightSide />
-				</div>
+					<div className='h-screen'>
+						<LeftSide/>
+						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
+                    		<div className='m-auto'>Settings</div>
+							<div className='m-2 h-20 float-right rounded-lg tile-inner-bg'>
+                        		<div className='m-2'>Add Event Button</div>
+                    		</div>
+                		</div>
+					</div>
+					<RightSide/>
+	  			</div>
 			</div>
 		</>
 	)
