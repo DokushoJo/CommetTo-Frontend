@@ -5,12 +5,18 @@
 
 .event-Focus__Overview {
     margin: 5rem;
+    background-color: lightgray;
+    border-radius: 1rem;
 }
 
 .event-Focus__Schedule {
     margin: 15rem;
+    background-color: lightgray;
+    border-radius: 1rem;
 }
 
 .event-Focus__Schedule__Timestamp {
     margin: 2rem;
+    background-color: lightgray;
+    border-radius: 1rem;
 }

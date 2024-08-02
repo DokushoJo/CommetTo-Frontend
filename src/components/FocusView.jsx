@@ -24,7 +24,7 @@ export default function FocusView(prop) {
 
     return (
         <>
-            <div className="text-white">FocusView
+            <div className="">
             {currentDisplayEvent !== null ?
                         <div className="event-Focus" key={currentDisplayEvent.id}>
                             <div className='event-Focus__Overview'>

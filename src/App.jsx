@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import './App.css'
-// @ts-ignore
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
 
@@ -20,11 +19,12 @@ function App() {
 				<div className='flex'>
 					<div className='h-screen'>
 						<LeftSide sendEventIdToRightSide={sendEventIdToRightSide}/>
-						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
-                    		<div className='m-auto'>Settings</div>
-							<div className='m-2 h-20 float-right rounded-lg tile-inner-bg'>
-                        		<div className='m-2'>Add Event Button</div>
-                    		</div>
+						<div className='absolute flex tile-bg Add-Button--size tile-shadow bottom-0'>
+                    		<div className='m-auto'>
+								<div className='m-2 h-12 rounded-lg tile-shadow'>
+                        			<div className='p-3'>Add Button</div>
+                    			</div>
+							</div>
                 		</div>
 					</div>
 					<RightSide selectedEventId={selectedEventId}/>

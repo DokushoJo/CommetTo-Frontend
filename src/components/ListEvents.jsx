@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
+import './ListEvents.css'
 
 const LISTS_URL = import.meta.env.VITE_APP_LISTS_URL
 
