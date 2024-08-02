@@ -17,7 +17,7 @@ export default function FocusView(prop) {
 
     // Helper functions
     async function changeEventView(EventId) {
-        const fetchedEvent = await fetch(VITE_APP_BASE_URL + "/event/ + EventId);
+        const fetchedEvent = await fetch(VITE_APP_BASE_URL + "/event/" + EventId);
         const eventJSONParsed = await fetchedEvent.json();
         setCurrentDisplayEvent(eventJSONParsed);
     }
