@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import SearchBox from "./SearchBox";
 
 const LISTS_URL = import.meta.env.VITE_APP_LISTS_URL
 
@@ -9,6 +10,7 @@ function Decodeuint8arr(uint8array) {
 export default function ListEvents(prop) {
 
     const [allEventsList, setAllEventsList] = useState(null)
+    const filterd = filterEvents()
 
     useEffect(() => {
         fetchListEvents()
@@ -25,12 +27,22 @@ export default function ListEvents(prop) {
         setAllEventsList(eventsJSONList)
     }
 
+    function filterEvents() {
+        if(prop.inputText===""){
+            return allEventsList;
+        }
+        const filtered = allEventsList.filter((e) => {
+            return e.name.toLowerCase().includes(prop.inputText) || e.date.toLowerCase().includes(prop.inputText)
+        })
+        return filtered
+    }
+
     return (
         <>
             This is List for events!
             <div>
-                {allEventsList !== null ?
-                    allEventsList.map((event) => {
+                {filterd !== null ?
+                    filterd.map((event) => {
                         return (
                             <div className="eventTile" key={event.id}>
                                 id: {event.id} <br />
