@@ -45,6 +45,18 @@ function App() {
 											toggleAdd(); }}}>
 												{dialogContent}</dialog>
 								</div>
+
+									{/* Edit Event Button Dialog */}
+									<div className='m-2'>
+									<button onClick={()=>{
+										setDialogContent(<Edit />)
+										toggleAdd()	}}> EDIT EVENT </button>
+
+									<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
+										if(e.currentTarget === e.target){
+											toggleAdd(); }}}>
+												{dialogContent}</dialog>
+								</div>
                     		</div>
                 		</div>
 					</div>
