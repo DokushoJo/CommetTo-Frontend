@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import "./LeftSide.css"
 import  ListEvents  from './ListEvents'
+import SearchBox from './SearchBox'
 
 export default function LeftSide() {
   const [count, setCount] = useState(0)
+  const [inputText, setInputText] = useState("")
 
     return (
         <>
@@ -12,12 +14,13 @@ export default function LeftSide() {
                 <div className='m-5 mb-20 mt-20 pb-1 rounded-lg tile-bg'>
                     <div className='m-2'>Search Box</div>
                     <div className='m-2 rounded-lg tile-inner-bg'>Search</div>
+                    <SearchBox {...{inputText, setInputText}}></SearchBox>
                 </div>
                 <div className='m-5 pb-0.5 rounded-lg tile-bg'>
                     <div className='m-2'>Events Box</div>
                     <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>Events</div>
                 </div>
-                <ListEvents/>
+                <ListEvents {...{inputText}}/>
             </div>
         </>
     )
