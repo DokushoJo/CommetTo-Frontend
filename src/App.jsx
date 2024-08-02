@@ -14,6 +14,9 @@ function App() {
 			<div>
 				<div className='flex'>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e7a7b95 (Update App.jsx)
 					<div className='h-screen'>
 						<LeftSide/>
 						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
@@ -25,11 +28,14 @@ function App() {
 					</div>
 					<RightSide/>
 	  			</div>
+<<<<<<< HEAD
 =======
 					<LeftSide />
 					<RightSide />
 				</div>
 >>>>>>> 357ab1e (feat:List all basic information about events)
+=======
+>>>>>>> e7a7b95 (Update App.jsx)
 			</div>
 		</>
 	)
