@@ -6,11 +6,10 @@
 }
 
 .leftside--width {
-    width: 45rem;
-    max-width: 70rem;
+    width: 30rem;
+    max-width: 30rem;
 }
 
 .event-box--height-text-size {
     height: 30rem;
-    font-size: 100px
 }

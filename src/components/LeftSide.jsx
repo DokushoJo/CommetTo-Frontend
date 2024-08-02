@@ -2,8 +2,9 @@ import { useState } from 'react'
 import "./LeftSide.css"
 import  ListEvents  from './ListEvents'
 
-export default function LeftSide() {
+export default function LeftSide(prop) {
   const [count, setCount] = useState(0)
+
 
     return (
         <>
@@ -15,9 +16,10 @@ export default function LeftSide() {
                 </div>
                 <div className='m-5 pb-0.5 rounded-lg tile-bg'>
                     <div className='m-2'>Events Box</div>
-                    <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>Events</div>
+                    <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>
+                        <ListEvents sendEventIdToRightSide={prop.sendEventIdToRightSide}/>
+                    </div>
                 </div>
-                <ListEvents/>
             </div>
         </>
     )
