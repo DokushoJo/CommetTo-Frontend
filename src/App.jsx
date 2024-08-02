@@ -1,5 +1,10 @@
 import { useState } from "react";
 import "./App.css";
+import LeftSide from "./components/LeftSide"
+import RightSide from "./components/RightSide"
+import TimeSchedule from "./components/TimeSchedule";
+import TimeScheduleList from "./components/TimeScheduleList";
+import { Save } from "./components/Save";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -8,7 +13,7 @@ function App() {
 
 	return (
 		<>
-			<div>
+			{/* <div>
 				<div className="flex">
 					<div className="h-screen">
 						<LeftSide />
@@ -21,7 +26,8 @@ function App() {
 					</div>
 					<RightSide />
 				</div>
-			</div>
+			</div> */}
+			<Save></Save>
 		</>
 	);
 }
