@@ -1,6 +1,5 @@
 import React, { ReactElement, useEffect, useState } from "react";
-import TimeSchedule from "./TimeSchedule";
-import { Schedule } from "../global";
+import TimeSchedule from './TimeSchedule'
 
 const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 	const [scheduleListComponents, setScheduleListComponents] = useState([]);
@@ -38,9 +37,18 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 
 	return (
 		<>
-			<div className="grid-cols-1">
+			<div
+				className="grid-cols-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+			>
 				{scheduleListComponents}
-				{isEditActive ? <p onClick={handleAddSchedule}>Add</p> : <p></p>}
+				{isEditActive ? (
+					<p onClick={handleAddSchedule} className="text-green-600">
+						Add
+					</p>
+				) : (
+					<p></p>
+				)}
 			</div>
 		</>
 	);
