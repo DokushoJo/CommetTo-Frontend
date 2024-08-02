@@ -2,19 +2,12 @@ import React, { ReactElement, useEffect, useState } from "react";
 import TimeSchedule from "./TimeSchedule";
 import { Schedule } from "../global";
 
-type Props = {
-	scheduleList: String;
-	isEditActive: boolean;
-};
-
-const TimeScheduleList: React.FC<Props> = ({ scheduleList, isEditActive }) => {
-	const [scheduleListComponents, setScheduleListComponents] = useState<
-		ReactElement[]
-	>([]);
-	const [scheduleListData, setScheduleListData] = useState<Schedule[]>([]);
+const TimeScheduleList = ({ scheduleList, isEditActive }) => {
+	const [scheduleListComponents, setScheduleListComponents] = useState([]);
+	const [scheduleListData, setScheduleListData] = useState([]);
 
 	useEffect(() => {
-		const tempComponents: ReactElement[] = [];
+		const tempComponents = [];
 		console.log("Refresh ");
 		for (let i = 0; i < scheduleListData.length; i++) {
 			tempComponents.push(
@@ -33,7 +26,7 @@ const TimeScheduleList: React.FC<Props> = ({ scheduleList, isEditActive }) => {
 	useEffect(() => {}, [scheduleListComponents]);
 
 	const handleAddSchedule = () => {
-		const emptySchedule: Schedule = {
+		const emptySchedule = {
 			id: 1,
 			time: 16,
 			name: "A new title",

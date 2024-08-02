@@ -1,10 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-import { useState } from "react";
-import "./App.css";
-// @ts-ignore
-import LeftSide from "./components/LeftSide";
-import RightSide from "./components/RightSide";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 

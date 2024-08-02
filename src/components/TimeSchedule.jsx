@@ -5,24 +5,12 @@ import React, {
 	useState,
 } from "react";
 
-type Props = {
-	time: number;
-	title: string;
-	description: string;
-	isEditActive: boolean;
-};
-
-const TimeSchedule: React.FC<Props> = ({
-	time,
-	title,
-	description,
-	isEditActive,
-}) => {
-	const [actualTime, setActualTime] = useState<string>(time.toString());
+const TimeSchedule = ({ time, title, description, isEditActive }) => {
+	const [actualTime, setActualTime] = useState(time.toString());
 	const [actualTitle, setActualTitle] = useState(title);
 	const [actualDescription, setActualDescription] = useState(description);
 
-	const handleOnChangeTime = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleOnChangeTime = (e) => {
 		setActualTime(e.target.value);
 		console.log(actualTime);
 	};
