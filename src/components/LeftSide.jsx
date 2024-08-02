@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import  ListEvents  from './ListEvents'
 
 export default function LeftSide() {
   const [count, setCount] = useState(0)
@@ -15,6 +16,7 @@ export default function LeftSide() {
                 <div className='m-28 mb-0 h-60 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>
                     Events Box
                 </div>
+                    <ListEvents />
                 <div className='m-28 mb-0 h-28 border shadow-lg shadow-gray-600 rounded-2xl border-white bg-gray-900'>
                     Add Event Button
                 </div>
