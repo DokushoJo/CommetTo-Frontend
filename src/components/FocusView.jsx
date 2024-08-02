@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-const VITE_APP_ONE_EVENT_URL = import.meta.env.VITE_APP_ONE_EVENT_URL
-import './FocusView.css'
+import { useEffect, useState } from 'react';
+const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+import './FocusView.css';
 
 export default function FocusView(prop) {
     const selectedEventId = prop.selectedEventId;
