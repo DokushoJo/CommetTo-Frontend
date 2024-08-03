@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
+import { useAuth } from "../hooks/useAuth";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 
 export function Login({ FormHandle }) {
 
+    const { login } = useAuth();
     // cosnt [passwordList, setPasswordList] = useState([]);
     const [addData, setAddData] = useState({
         username: '',
@@ -40,9 +42,16 @@ export function Login({ FormHandle }) {
         }
         console.log(userData)
 
-        await Axios.post(BACKEND_URL , userData)
-        .then(res => console.log(res.data))
-        .catch(err => console.log(err))
+        await Axios.post(BACKEND_URL + `/login` , userData)
+        .then(async (res) => {
+            console.log(res);
+            if (res.status === 200) {
+                await login(res.data.token, res.data.id)
+            }
+        })
+        .catch(err => {
+            alert("Invalid username or password");
+            console.log(err)})
     }
 
 
