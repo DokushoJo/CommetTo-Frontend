@@ -10,7 +10,6 @@ import { Register } from './components/Register';
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
-	const [selectedEventId, setSelectedEventId] = useState(null)
 
 	// Helper function
 	function sendEventIdToRightSide(EventId) {
@@ -20,7 +19,11 @@ function App() {
 	//UseState
 	const [dialogContent, setDialogContent] = useState(null); //add button click
 	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
+	const [selectedEventId, setSelectedEventId] = useState(null)
 	
+
+	//Jsx handle functions
+
 	// ADD BUTTON CLICK
 	const dialogRef = useRef(null);
 	const toggleAdd = () =>  {
@@ -31,14 +34,14 @@ function App() {
 		: dialogRef.current.showModal();
 	};
 
-	
+	// LIST 
+	function sendEventIdToRightSide(EventId) {
+		setSelectedEventId(EventId);
+	}
 
 	return (
-		
-	
-		
-	
 		<>
+		
 		{/* //function to click register new user and already have an account 
 		{register === 'login' ? (<Login FormHandle={setRegister}/> ) : (<Register FormHandle={setRegister}/>)};
 		*/}
