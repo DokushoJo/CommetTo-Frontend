@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
-import crypto from 'crypto'
-import sha256 from 'crypto-js/sha256'
+
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
