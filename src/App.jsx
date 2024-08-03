@@ -37,11 +37,8 @@ function App() {
 	
 
 	return (
-		
-	
-		
-	
 		<>
+		
 		{/* //function to click register new user and already have an account 
 		{register === 'login' ? (<Login FormHandle={setRegister}/> ) : (<Register FormHandle={setRegister}/>)};
 		*/}
