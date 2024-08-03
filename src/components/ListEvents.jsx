@@ -50,7 +50,6 @@ export default function ListEvents(prop) {
                     filterd.map((event) => {
                         return (
                             <div className="eventTile" key={event.id} id={event.id} onClick={handleSendEventIdToRightSide}>
-                                id: {event.id} <br />
                                 name: {event.name} <br />
                                 date: {event.date} <br /><br />
                             </div>

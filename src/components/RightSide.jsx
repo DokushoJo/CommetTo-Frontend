@@ -18,7 +18,7 @@ export default function RightSide(prop) {
 
     return (
         <>
-            <div className="w-full h-screen overflow-auto border-l border-black">
+            <div className="flex-col w-full h-screen overflow-auto border-l border-black">
                 {currentView}
             </div>
         </>

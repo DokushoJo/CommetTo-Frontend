@@ -1,4 +1,5 @@
 .eventTile {
+    box-shadow: 1px 1px 5px 1px rgb(136, 136, 136);
     background-color: rgb(197, 197, 197);
     border-radius: 1rem;
     margin: 1rem;

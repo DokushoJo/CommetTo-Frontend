@@ -1,22 +1,65 @@
 .event-Focus {
-    margin: 5rem;
     text-align: center;
+    height: 100vh;
 }
 
 .event-Focus__Overview {
-    margin: 5rem;
-    background-color: lightgray;
+    background-color: rgb(242, 242, 242);
+    height: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.event-Focus__Overview-container {
+    padding-bottom: 4rem;
+}
+.Overview-title {
+    font-size: 50px;
+    font-weight: 900;
+    padding: 1rem;
+}
+
+.event-Focus__Overview-box {
+    box-shadow: 1px 1px 5px 1px rgb(188, 188, 188);
+    background-color: rgb(237, 237, 237);
     border-radius: 1rem;
+    width: 40rem;
+    height: 10rem;
 }
 
 .event-Focus__Schedule {
-    margin: 15rem;
-    background-color: lightgray;
-    border-radius: 1rem;
+    background-color: rgb(231, 231, 231);
+    height: 50%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.event-Focus__Schedule-container {
+    padding-bottom: 4rem;
+}
+.Schedule-title {
+    font-size: 50px;
+    font-weight: 900;
+    padding: 1rem;
 }
 
-.event-Focus__Schedule__Timestamp {
-    margin: 2rem;
-    background-color: lightgray;
+.event-Focus__Schedule-box {
+    box-shadow: 1px 1px 5px 1px rgb(188, 188, 188);
+    background-color: rgb(237, 237, 237);
     border-radius: 1rem;
+    width: 40rem;
+    padding: 2rem;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.event-Focus__Schedule-box__Timestamp {
+    box-shadow: 1px 1px 5px 1px rgb(179, 179, 179);
+    background-color: lightgray;
+    border-radius: 0.3rem;
+    width: 35rem;
 }
