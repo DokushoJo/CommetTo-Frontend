@@ -20,8 +20,6 @@ const [addData, setAddData] = useState({
 
 //handler functions
 
-// checks password
-
 const handleClick = () => {
     setEditButton(editButton === 'Add' ? 'Saved' : 'Saved');
 }
@@ -46,16 +44,13 @@ const handleSumbitData = async (e) => {
     time: addData.time,
   };
   
-  await axios.post(BACKEND_URL , userData)
-  .then(res => console.log(res.data))
-  .catch(err => console.log(err))
 
-  // try{
-  //   const response = await axios.post( BACKEND_URL + 'event', userData);
-  //   console.log(response);
-  // } catch (error){
-  //   return 'Invalid Input';
-  // }
+  try{
+    const response = await axios.post( BACKEND_URL + 'event', userData);
+    console.log(response);
+  } catch (error){
+    return 'Invalid Input';
+  }
 }
 
 
