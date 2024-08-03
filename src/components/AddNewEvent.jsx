@@ -15,24 +15,23 @@ export default function AddNewEvent() {
 
 	const shcedulesRef = useRef(null)
 
-	const submitData = () => {
-		const postObj = {
-			"overview": {
-				"name": addData.name,
-				"description": addData.description,
-				"date": addData.date,
-				"updated_at": new Date()
-			},
-			"schedule": getChildState().map((element) => {
-				return {
-					"name": element.name,
-					"time": element.time,
-					"description": element.description
-				}
-			}),
-		}
-		console.log(postObj)
-	};
+	// const submitData = () => {
+	// 	const postObj = {
+	// 		"overview": {
+	// 			"name": addData.name,
+	// 			"description": addData.description,
+	// 			"date": new Date(addData.date),
+	// 			"updated_at": new Date()
+	// 		},
+	// 		"schedule": getChildState().map((element) => {
+	// 			return {
+	// 				"name": element.name,
+	// 				"time": new Date(addData.date + ":" + element.time),
+	// 				"description": element.description
+	// 			}
+	// 		}),
+	// 	}
+	// };
 
 	const handleEventsData = (key, e) => {
 		e.preventDefault();
@@ -46,19 +45,18 @@ export default function AddNewEvent() {
 			"overview": {
 				"name": addData.name,
 				"description": addData.description,
-				"date": addData.date,
+				"date": new Date(addData.date),
 				"updated_at": new Date()
 			},
 			"schedule": getChildState().map((element) => {
 				return {
-					"name": element.name,
-					"time": element.time,
+					"name": element.title,
+					"time": new Date(addData.date + ":" + element.time),
 					"description": element.description
 				}
 			}),
 		}
 		e.preventDefault();
-		console.log(postObj)
 
 		await axios
 			.post(BACKEND_URL + `/event`, postObj)
@@ -105,7 +103,7 @@ export default function AddNewEvent() {
 								className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
 							></label>
 							<input
-								type="text"
+								type="date"
 								value={addData.date}
 								onChange={(e) => handleEventsData("date", e)}
 								required
@@ -144,7 +142,7 @@ export default function AddNewEvent() {
 
 						<div>
 							<button
-								onClick={() => submitData()}
+								// onClick={() => submitData()}
 								type="submit"
 								data-twe-ripple-init
 								data-twe-ripple-color="light"
