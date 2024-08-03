@@ -12,7 +12,7 @@ export default function LeftSide(prop) {
         <>
             <div className='h-screen flex-col overflow-auto leftside--width text-black'>
                 <div className='font-bold text-5xl text-center m-16 text-shadow'>CommetTo ☄️</div>
-                <div className='flex m-auto mb-20 mx-5 p-3 rounded-lg tile-bg tile-shadow'>
+                <div className='flex m-auto mb-5 mx-5 p-3 rounded-lg tile-bg tile-shadow'>
                     <div className='flex'>
                         <img src='./../../images/search_icon.png' className='h-10 pl-2'/>
                         <h3 className='pl-2.5 text-4xl'>Search</h3>
