@@ -7,6 +7,7 @@ import { Save } from './components/Save';
 import { Edit } from './components/Edit';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
+import {sessionData} from "./util/util";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -18,7 +19,7 @@ function App() {
 	const [selectedEventId, setSelectedEventId] = useState(null)
 	const [authToken, setAuthToken] = useState(null);
 	
-
+	console.log(sessionData());
 	//Jsx handle functions
 
 	// ADD BUTTON CLICK

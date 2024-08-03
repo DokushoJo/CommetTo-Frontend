@@ -46,7 +46,7 @@ export function Login({ FormHandle }) {
         .then(async (res) => {
             console.log(res);
             if (res.status === 200) {
-                await login(res.data.token, res.data.id)
+                await login(res.data.token, res.data.username.id);
             }
         })
         .catch(err => {
