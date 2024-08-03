@@ -13,7 +13,6 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 	};
 
 	const handleOnChangeTime = (e, index) => {
-		console.log(e)
 		const validation = new RegExp(/\d\d:\d\d/g)
 		if (e.target.value.match(validation)) {
 			const copy = scheduleColumn
@@ -23,8 +22,6 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 		}
 	};
 	const handleOnChangeTitle = (e, index) => {
-		console.log(e.target.value)
-		console.log(e)
 		const copy = scheduleColumn
 		const before = scheduleColumn[index]
 		before.title = e.target.value
