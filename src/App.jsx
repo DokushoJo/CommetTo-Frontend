@@ -34,22 +34,26 @@ function App() {
 		: dialogRef.current.showModal();
 	};
 
-	// LIST 
-	function sendEventIdToRightSide(EventId) {
-		setSelectedEventId(EventId);
-	}
+	
 
 	return (
+		
+	
+		
+	
 		<>
-			
-			<div>
+		{/* //function to click register new user and already have an account 
+		{register === 'login' ? (<Login FormHandle={setRegister}/> ) : (<Register FormHandle={setRegister}/>)};
+		*/}
+		
+			 <div>
 				<div className='flex'>
 					<div className='h-screen'>
 						<LeftSide sendEventIdToRightSide={sendEventIdToRightSide}/>
 						<div className='absolute flex tile-bg Add-Button--size tile-shadow bottom-0'>
                     		<div className='m-auto'>
 								<div className='m-2 h-12 rounded-lg tile-shadow'>
-												{/* Add Event Button Dialog box */}
+									{/* Add Event Button Dialog box */}
 									<div>
 										<button onClick={()=>{
 											setDialogContent(<Save />)

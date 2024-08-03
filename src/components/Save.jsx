@@ -44,11 +44,6 @@ const handleSumbitData = async (e) => {
     time: addData.time,
   };
   
-  if(!addData.name || !addData.description || !addData.time){
-    console.log('Input required!')
-    return;
-}
-  console.log(userData)
 
   try{
     const response = await axios.post( BACKEND_URL + 'event', userData);
@@ -56,10 +51,6 @@ const handleSumbitData = async (e) => {
   } catch (error){
     return 'Invalid Input';
   }
-
-  // await axios.post(BACKEND_URL + 'event', userData)
-  // .then(res => console.log(res.data))
-  // .catch(err => console.log(err))
 }
 
 
