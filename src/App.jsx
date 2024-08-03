@@ -17,9 +17,7 @@ function App() {
 	const [dialogContent, setDialogContent] = useState(null); //add button click
 	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
 	const [selectedEventId, setSelectedEventId] = useState(null)
-	const [authToken, setAuthToken] = useState(null);
-	
-	console.log(sessionData());
+
 	//Jsx handle functions
 
 	// ADD BUTTON CLICK
