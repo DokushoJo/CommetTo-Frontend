@@ -8,6 +8,7 @@ function Decodeuint8arr(uint8array) {
 }
 
 export default function ListEvents(prop) {
+    const sendEventIdToRightSide = prop.sendEventIdToRightSide;
 
     const [allEventsList, setAllEventsList] = useState(null)
     const filterd = filterEvents()
@@ -37,14 +38,17 @@ export default function ListEvents(prop) {
         return filtered
     }
 
+    function handleSendEventIdToRightSide(event) {
+        sendEventIdToRightSide(event.target.id);
+    }
+
     return (
         <>
-            This is List for events!
             <div>
                 {filterd !== null ?
                     filterd.map((event) => {
                         return (
-                            <div className="eventTile" key={event.id}>
+                            <div className="eventTile" key={event.id} id={event.id} onClick={handleSendEventIdToRightSide}>
                                 id: {event.id} <br />
                                 name: {event.name} <br />
                                 date: {event.date} <br /><br />

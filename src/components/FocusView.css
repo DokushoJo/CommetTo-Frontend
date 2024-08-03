@@ -1,0 +1,16 @@
+.event-Focus {
+    margin: 5rem;
+    text-align: center;
+}
+
+.event-Focus__Overview {
+    margin: 5rem;
+}
+
+.event-Focus__Schedule {
+    margin: 15rem;
+}
+
+.event-Focus__Schedule__Timestamp {
+    margin: 2rem;
+}

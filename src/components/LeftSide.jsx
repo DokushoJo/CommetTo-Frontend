@@ -1,11 +1,13 @@
-import { useState } from 'react'
-import "./LeftSide.css"
-import  ListEvents  from './ListEvents'
+import { createContext, useState } from 'react'
+import ListEvents from './ListEvents'
 import SearchBox from './SearchBox'
+import "./LeftSide.css"
+import AddNewEvent from './AddNewEvent'
 
-export default function LeftSide() {
-  const [count, setCount] = useState(0)
-  const [inputText, setInputText] = useState("")
+export default function LeftSide(prop) {
+    const [count, setCount] = useState(0)
+    const [inputText, setInputText] = useState("")
+
 
     return (
         <>
@@ -13,14 +15,17 @@ export default function LeftSide() {
                 Left Side
                 <div className='m-5 mb-20 mt-20 pb-1 rounded-lg tile-bg'>
                     <div className='m-2'>Search Box</div>
-                    <div className='m-2 rounded-lg tile-inner-bg'>Search</div>
+                    <div className='m-2 rounded-lg tile-inner-bg'>Search
                     <SearchBox {...{inputText, setInputText}}></SearchBox>
+                    </div>
                 </div>
                 <div className='m-5 pb-0.5 rounded-lg tile-bg'>
                     <div className='m-2'>Events Box</div>
-                    <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>Events</div>
+                    <div className='event-box--height-text-size overflow-auto m-2 rounded-lg tile-inner-bg'>
+                        <ListEvents sendEventIdToRightSide={prop.sendEventIdToRightSide} {...{inputText}}/>
+                    </div>
                 </div>
-                <ListEvents {...{inputText}}/>
+                <AddNewEvent></AddNewEvent>
             </div>
         </>
     )
