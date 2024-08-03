@@ -55,6 +55,10 @@ const handleSumbitData = async (e) => {
   } catch (error){
     return 'Invalid Input';
   }
+
+  // await axios.post(BACKEND_URL + 'event', userData)
+  // .then(res => console.log(res.data))
+  // .catch(err => console.log(err))
 }
 
 
