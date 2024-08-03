@@ -23,7 +23,7 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 				{scheduleColumn.map((s) => {
 					return s;
 				})}
-				<p onClick={() => { handleAddSchedule(scheduleColumn.length) }} className="text-green-600">
+				<p onClick={() => { handleAddSchedule(scheduleColumn.length) }} className="text-green-600 w-8">
 					Add
 				</p>
 			</div>
