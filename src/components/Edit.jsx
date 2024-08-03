@@ -44,7 +44,14 @@ const handleSubmitData = async (e) => {
         description: post.description,
         time: post.time,
       };
-      console.log(userData)``
+
+      //check if all inputs are filled
+      if(!post.name || !post.description || !post.time){
+        console.log('Input required!')
+        return;
+    }
+      console.log(userData)
+
     
     axios.put(BACKEND_URL , userData)
     .then(res => console.log(res.data))
