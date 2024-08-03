@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import TimeSchedule from './TimeSchedule'
 
-const TimeScheduleList = ({ scheduleList, isEditActive }) => {
+// const TimeScheduleList = ({ scheduleList, isEditActive }) => {
+const TimeScheduleList = forwardRef(function TimeScheduleList(props, ref) {
 	const [scheduleColumn, setScheduleColumn] = useState([]);
 
 	const handleAddSchedule = () => {
@@ -10,6 +11,7 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 			title: "",
 			description: ""
 		}]);
+		// getScheduleColumn(scheduleColumn)
 	};
 
 	const handleOnChangeTime = (e, index) => {
@@ -44,16 +46,23 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 		setScheduleColumn(copy)
 	}
 
-	const deleteSchedule=(index)=>{
+	const deleteSchedule = (index) => {
 		const copy = scheduleColumn
 		setScheduleColumn(copy.slice(0, index).concat(copy.slice(index + 1)))
 	}
+
+	useImperativeHandle(ref, () => ({
+		getScheduleColumn: () => {
+			return scheduleColumn
+		}
+	}))
 
 	return (
 		<>
 			<div
 				className="grid-cols-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
                   focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+				ref={ref}
 			>
 				{scheduleColumn.map((element, index) => {
 					return (<TimeSchedule key={index} {...{
@@ -62,7 +71,7 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 						handleOnChangeTime: handleOnChangeTime, handleOnChangeTitle: handleOnChangeTitle,
 						handleOnChangeDescription: handleOnChangeDescription,
 						scheduleColumn: scheduleColumn, setScheduleColumn: setScheduleColumn,
-						deleteSchedule:deleteSchedule
+						deleteSchedule: deleteSchedule
 					}}>
 					</TimeSchedule>);
 				})}
@@ -75,6 +84,6 @@ const TimeScheduleList = ({ scheduleList, isEditActive }) => {
 			</div>
 		</>
 	);
-};
+});
 
 export default TimeScheduleList;

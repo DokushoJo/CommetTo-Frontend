@@ -1,20 +1,41 @@
-import React, { useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 import { Axios } from "axios";
 import axios from "axios";
 import TimeScheduleList from "./TimeScheduleList";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
-export function Save() {
+export default function AddNewEvent() {
 	//useState
 
-	const [editButton, setEditButton] = useState("Add");
+	// const [editButton, setEditButton] = useState("Add");
 	const [addData, setAddData] = useState({
 		name: "",
 		time: "",
 		description: "",
 	});
-  const [scheduleData, setScheduleData] = useState([]);
+	const [scheduleData, setScheduleData] = useState([]);
+
+	const shcedulesRef = useRef(null)
+
+
+
+
+	const dataToSent = {};
+	const overViewEvent = {
+		name: addData.name,
+		description: addData.description,
+		time: addData.time,
+	};
+	const schedule = {
+
+	}
+
+	const userData = {
+		name: addData.name,
+		description: addData.description,
+		time: addData.time,
+	};
 
 	//useEffect
 
@@ -23,7 +44,8 @@ export function Save() {
 	// checks password
 
 	const handleClick = () => {
-		setEditButton(editButton === "Add" ? "Saved" : "Saved");
+		// setEditButton(editButton === "Add" ? "Saved" : "Saved");
+		console.log(getChildState())
 	};
 
 	//creates object takes in event details.
@@ -40,23 +62,8 @@ export function Save() {
 		console.log(addData);
 		e.preventDefault();
 
-    console.log(e);
+		console.log(e);
 
-    const dataToSent = {};
-    const overViewEvent = {
-			name: addData.name,
-			description: addData.description,
-			time: addData.time,
-		};
-    const schedule = {
-
-    }
-
-		const userData = {
-			name: addData.name,
-			description: addData.description,
-			time: addData.time,
-		};
 
 		await axios
 			.post(BACKEND_URL + `/event`, userData)
@@ -70,6 +77,11 @@ export function Save() {
 		//   return 'Invalid Input';
 		// }
 	};
+
+	function getChildState() {
+		const childState = shcedulesRef.current.getScheduleColumn()
+		console.log(childState)
+	}
 
 	//JSX return
 
@@ -106,7 +118,10 @@ export function Save() {
 						<h1 className=" mb-6 h-2">Schedule</h1>
 						<div className="mb-5">
 							<div>
-								<TimeScheduleList isEditActive={true}></TimeScheduleList>
+								{/* <TimeScheduleList isEditActive={true} getScheduleColumn={getScheduleColumn} */}
+								<TimeScheduleList isEditActive={true} ref={shcedulesRef}
+									></TimeScheduleList>
+								{/* <WrapTimeScheduleList ref={shcedulesRef}/> */}
 							</div>
 						</div>
 
@@ -141,7 +156,7 @@ export function Save() {
                   hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 
                   focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
 							>
-								{editButton}
+								{/* {editButton} */}
 							</button>
 						</div>
 					</form>
