@@ -1,5 +1,5 @@
 # React + Vite
-![Static Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)![Static Badge](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Static Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
@@ -41,6 +41,7 @@ $ "react-dom" - https://www.npmjs.com/package/react-dom
 $ "tw-elements" -  https://www.npmjs.com/package/tw-elements
 $ "vite" -  https://www.npmjs.com/package/vite
 $ "tailwindcss" - https://www.npmjs.com/package/tailwindcss
+$ "react-router-dom" - https://www.npmjs.com/package/react-router-dom
 ```
 ### Setting up Development
 
@@ -59,15 +60,14 @@ $ npm run dev - command to fire and run React-Vite on the browser
 #### Change the file setting:<br>
 You need to change some variables.<br>
 
-1. Create a new .env.local file.
+1. For Configuration Create a new .env.local file.
 
 ```
 for this setup, create a new ".env.local" file and add the following changes to initialize a link between the Front-end and Back-end server, end-points and requests.
 
 VITE_APP_BASE_URL= http://localhost:3100 
 VITE_APP_PORT = 4173
-VITE_APP_LISTS_URL = http://localhost:3100/all-events/info
-VITE_APP_ONE_EVENT_URL = 
+ 
 ```
 
 ## File structure in src folder
@@ -103,11 +103,6 @@ Fork the repo and use the button below to deploy this project with ease.
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy)
 
 To deploy manually, see the guide at https://docs.render.com/databases. or https://docs.render.com/deploy-node-express-app
-
-## Configuration
-
-
-## Tests
 
 
 ## Style Guide
