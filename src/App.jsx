@@ -1,27 +1,34 @@
-import { useRef, useState} from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
 import { Save } from './components/Save';
-import { Edit } from './components/Edit';
+import { EditEvent } from './components/EditEvent';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
-import {sessionData} from "./util/util";
+import { sessionData } from "./util/util";
 import AddNewEvent from './components/AddNewEvent';
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
+
+	//UseState
+	const [dialogContent, setDialogContent] = useState(null); //add button click
+	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
+	const [selectedEventId, setSelectedEventId] = useState(null)
+
+
 	//Jsx handle functions
 
 	// ADD BUTTON CLICK
 	const dialogRef = useRef(null);
-	const toggleAdd = () =>  {
-		if(!dialogRef.current){
+	const toggleAdd = () => {
+		if (!dialogRef.current) {
 			return;
 		}
-		dialogRef.current.hasAttribute("open") ? dialogRef.current.close() 
-		: dialogRef.current.showModal();
+		dialogRef.current.hasAttribute("open") ? dialogRef.current.close()
+			: dialogRef.current.showModal();
 	};
 
 	// LIST 
@@ -29,20 +36,14 @@ function App() {
 		setSelectedEventId(EventId);
 	}
 	
-
-	//UseState
-	const [dialogContent, setDialogContent] = useState(null); //add button click
-	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
-	const [selectedEventId, setSelectedEventId] = useState(null)	
-
 	return (
 		<>
-		
-		{/* //function to click register new user and already have an account 
+
+			{/* //function to click register new user and already have an account 
 		{register === 'login' ? (<Login FormHandle={setRegister}/> ) : (<Register FormHandle={setRegister}/>)};
 		*/}
-		
-			 <div>
+
+			<div>
 				<div className='flex'>
 					<div className='h-screen'>
 						<LeftSide sendEventIdToRightSide={sendEventIdToRightSide}/>
@@ -68,13 +69,13 @@ function App() {
 
                 		</div>
 					</div>
-					<RightSide selectedEventId={selectedEventId}/>
-	  			</div>
-			</div> 
+					<RightSide selectedEventId={selectedEventId} />
+				</div>
+			</div>
 		</>
-	
 
-		)	
+
+	)
 }
 
 export default App;
