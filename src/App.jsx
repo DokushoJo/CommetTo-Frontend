@@ -66,6 +66,7 @@ function App() {
 										{dialogContent}</dialog>
 								</div>
                     		
+
                 		</div>
 					</div>
 					<RightSide selectedEventId={selectedEventId} />
