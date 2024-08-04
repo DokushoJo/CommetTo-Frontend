@@ -1,158 +1,170 @@
-import React, { useEffect, useState } from 'react'
-import Axios from 'axios';
-
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
+export function Register() {
+	const navigate = useNavigate();
+    const { login } = useAuth();
+	//useState
+	const [addData, setAddData] = useState({
+		email: "",
+		username: "",
+		password: "",
+	});
 
-export function Register( { FormHandle }) {
+	useEffect(() => {}, []);
 
-    
-    //useState
-    const [addData, setAddData] = useState({
-        email: '',
-        username: '',
-        password: '',
-    })
+	//handle functions
 
-    useEffect(() => {
-        
-    },[])
+	//creates object for user data input
+	const handlePasswordData = (key, e) => {
+		e.preventDefault();
+		const value = e.target.value;
+		const newData = { ...addData, [key]: value };
+		setAddData(newData);
+		// console.log(addData);
+	};
 
-    //handle functions
+	//function that sends data to Database
+	const handleAddPassword = async (e) => {
+		e.preventDefault();
 
-    //creates object for user data input
-    const handlePasswordData = (key, e) => {
-        e.preventDefault();
-        const value = e.target.value;
-        const newData = {...addData, [key]: value}
-        setAddData(newData);
-        // console.log(addData);
-    }
+		const userData = {
+			email: addData.email,
+			username: addData.username,
+			password: addData.password,
+		};
+		//if data is null return (unable to submit)
+		if (!addData.email || !addData.username || !addData.password) {
+			return;
+		}
 
-    //function that sends data to Database
-    const handleAddPassword = async (e) => {
-        e.preventDefault();
+		await Axios.post(BACKEND_URL + `/register`, userData)
+			.then(async (res) => {
+				if (res.status === 200) {
+					await login(res.data.token, res.data.username.id);
+				}
+			})
+			.catch((err) => {
+                console.log(err);
+				if (err.response.status === 409) {
+					alert("Username already taken");
+				} else {
+					alert("Invalid username or password");
+				}
+			});
+	};
 
-        const userData = {
-            email: addData.email,
-            username: addData.username,
-            password: addData.password,
-        }
-        //if data is null return (unable to submit)
-        if(!addData.email || !addData.username|| !addData.password){
-            console.log('Input required!')
-            return;
-        }
-        console.log(userData)
+	return (
+		<>
+			<div className="leftside">
+				<div className="flex mt-10 min-h-full flex-1 justify-center px-6 py-12 lg:px-8">
+					<div className="w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl">
+						<div className="sm:mx-auto sm:w-full sm:max-w-sm">
+							{/* HEADER */}
+							<h2 className="text-[#2d7fa3] text-center text-2xl font-bold leading-9 tracking-tight ">
+								Sign Up
+							</h2>
+						</div>
 
-        await Axios.post(BACKEND_URL , userData)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    }
-
-
-  return (
-    <>
-   
-
-        <div className='leftside'>
-        <div className="flex mt-10 min-h-full flex-1 justify-center px-6 py-12 lg:px-8">
-            <div className='w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
-                <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-               
-                {/* HEADER */}
-                <h2  className="text-[#2d7fa3] text-center text-2xl font-bold leading-9 tracking-tight ">
-                    Sign Up
-                    </h2>
-                    </div>
-
-                    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form action="#" method="POST" className="space-y-6">
-
-                                <div>
-                                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                                        Email
-                                    </label>
-                                    <div className="mt-2">
-                                        <input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        required
-                                        autoComplete="email"
-                                        placeholder='User email'
-                                        value={addData.email}
-                                        onChange={e => handlePasswordData("email", e)}
-                                        className="p-3  text-xs block w-full rounded-md 
+						<div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+							<form action="#" method="POST" className="space-y-6">
+								<div>
+									<label
+										htmlFor="email"
+										className="block text-sm font-medium leading-6 text-gray-900"
+									>
+										Email
+									</label>
+									<div className="mt-2">
+										<input
+											id="email"
+											name="email"
+											type="email"
+											required
+											autoComplete="email"
+											placeholder="User email"
+											value={addData.email}
+											onChange={(e) => handlePasswordData("email", e)}
+											className="p-3  text-xs block w-full rounded-md 
                                         border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                         ring-gray-300 placeholder:text-gray-400 focus:ring-2 
                                         focus:ring-inset  sm:text-sm sm:leading-6"
-                                        />
-                                    </div>
-                                </div>
+										/>
+									</div>
+								</div>
 
-                                {/* USERNAME */}
-                                <div>
-                                <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Username
-                                </label>
-                                <div className="mt-2">
-                                    <input
-                                    id="text1"
-                                    name="text1"
-                                    type="text1"
-                                    required
-                                    autoComplete="text"
-                                    placeholder='Username'
-                                    value={addData.username}
-                                    onChange={e => handlePasswordData("username", e)}
-                                    className="p-3  text-xs block w-full rounded-md 
+								{/* USERNAME */}
+								<div>
+									<label
+										htmlFor="email"
+										className="block text-sm font-medium leading-6 text-gray-900"
+									>
+										Username
+									</label>
+									<div className="mt-2">
+										<input
+											id="text1"
+											name="text1"
+											type="text1"
+											required
+											autoComplete="text"
+											placeholder="Username"
+											value={addData.username}
+											onChange={(e) => handlePasswordData("username", e)}
+											className="p-3  text-xs block w-full rounded-md 
                                     border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset
                                     ring-gray-300 placeholder:text-gray-400 focus:ring-2 
                                     focus:ring-inset  sm:text-sm sm:leading-6"
-                                    />
-                                </div>
-                                </div>
+										/>
+									</div>
+								</div>
 
-                                {/* PASSWORD */}
-                                <div>
-                                <div className="flex items-center justify-between ">
-                                    <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
-                                    Password
-                                    </label>
-                                    <div className="text-sm">
-                                    
-                                    </div>
-                                </div>
-                                <div className="mt-2">
-                                    <input
-                                    id="password1"
-                                    name="password1"
-                                    type="password1"
-                                    required
-                                    autoComplete="current-password"
-                                    placeholder='Password'
-                                    value={addData.password}
-                                    onChange={e => handlePasswordData("password", e)}
-                                    className=" p-3 text-xs block w-full rounded-md border-0 py-1.5
+								{/* PASSWORD */}
+								<div>
+									<div className="flex items-center justify-between ">
+										<label
+											htmlFor="password"
+											className="block text-sm font-medium leading-6 text-gray-900"
+										>
+											Password
+										</label>
+										<div className="text-sm"></div>
+									</div>
+									<div className="mt-2">
+										<input
+											id="password"
+											name="password"
+											type="password"
+											required
+											autoComplete="current-password"
+											placeholder="Password"
+											value={addData.password}
+											onChange={(e) => handlePasswordData("password", e)}
+											className=" p-3 text-xs block w-full rounded-md border-0 py-1.5
                                     text-gray-900 shadow-sm ring-1 ring-inset
                                     ring-gray-300 placeholder:text-gray-400 focus:ring-2 
                                     focus:ring-inset  sm:text-sm sm:leading-6"
-                                    />
-                                </div>
-                                </div>
+										/>
+									</div>
+								</div>
 
-                                <a href="#" className="text-xs text-black-600 hover:text-cyan-800">
-                                        Forgot password?
-                                    </a>
+								<a
+									href="#"
+									className="text-xs text-black-600 hover:text-cyan-800"
+								>
+									Forgot password?
+								</a>
 
-                                {/* SIGNIN BUTTON */}
-                                <div>
-                                <button
-                                    type="submit" 
-                                    onClick={handleAddPassword}
-                                    className="p-3 mt-20 select-none rounded-lg bg-gray-400 py-3 px-6 
+								{/* SIGNIN BUTTON */}
+								<div>
+									<button
+										type="submit"
+										onClick={handleAddPassword}
+										className="p-3 mt-20 select-none rounded-lg bg-gray-400 py-3 px-6 
                                     text-center align-middle font-sans text-xs 
                                     font-bold uppercase text-white shadow-md shadow-gray-600/50
                                     transition-all hover:shadow-lg hover:shadow-blue-500/40 
@@ -161,21 +173,23 @@ export function Register( { FormHandle }) {
                                     disabled:shadow-none flex w-full justify-center  leading-6 hover:bg-cyan-700
                                     focus-visible:outline focus-visible:outline-2 
                                     focus-visible:outline-offset-2 focus-visible:outline-blue-600"
-                                >
-                                    Sign up
-                                </button>
-                                </div>
-                            </form>
+									>
+										Sign up
+									</button>
+								</div>
+							</form>
 
-                        <p style={{cursor:'pointer'}} onClick={()=> FormHandle('login')}className="mt-3 text-center text-sm text-gray-500">
-                            Already have an account
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </>
-
-  )
+							<p
+								style={{ cursor: "pointer" }}
+								onClick={() => navigate("/login", { replace: true })}
+								className="mt-3 text-center text-sm text-gray-500"
+							>
+								Already have an account
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</>
+	);
 }

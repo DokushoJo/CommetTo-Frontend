@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
+import './ListEvents.css'
+import {setHeader} from "../util/util";
 
-const LISTS_URL = import.meta.env.VITE_APP_LISTS_URL
+const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
+
 
 function Decodeuint8arr(uint8array) {
     return new TextDecoder("utf-8").decode(uint8array);
@@ -18,7 +21,8 @@ export default function ListEvents(prop) {
     }, [])
 
     async function fetchListEvents() {
-        const fetched = await fetch(LISTS_URL);
+        const fetchContent = setHeader('GET');
+        const fetched = await fetch(LISTS_URL, fetchContent);
         const createdIdInUint8Arr = []
         for await (let chunk of fetched.body) {
             createdIdInUint8Arr.push(chunk)
@@ -49,7 +53,6 @@ export default function ListEvents(prop) {
                     filterd.map((event) => {
                         return (
                             <div className="eventTile" key={event.id} id={event.id} onClick={handleSendEventIdToRightSide}>
-                                id: {event.id} <br />
                                 name: {event.name} <br />
                                 date: {event.date} <br /><br />
                             </div>
