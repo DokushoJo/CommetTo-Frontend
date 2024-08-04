@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState} from 'react'
 import './App.css'
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -7,6 +7,7 @@ import { Edit } from './components/Edit';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import {sessionData} from "./util/util";
+import AddNewEvent from './components/AddNewEvent';
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -47,7 +48,19 @@ function App() {
 						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
                     		<div className='m-auto'>Settings</div>
 							<div className='m-2 h-20 float-right rounded-lg tile-inner-bg'>
-                        		<div className='m-2'>Add Event Button</div>
+
+
+								{/* Add Event Button Dialog box */}
+								<div >
+									<button onClick={()=>{
+									setDialogContent(<AddNewEvent />)
+									toggleAdd()	}}> ADD EVENT </button>
+
+									<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
+									if(e.currentTarget === e.target){
+										toggleAdd(); }}}>
+										{dialogContent}</dialog>
+								</div>
                     		</div>
                 		</div>
 					</div>
