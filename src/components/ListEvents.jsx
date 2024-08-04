@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
 import './ListEvents.css'
-import {setHeader} from "../util/util";
+import { setHeader } from "../util/util";
 
-const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
+const LISTS_URL = import.meta.env.VITE_EXPRESS_BASE_URL + ":" + import.meta.env.VITE_EXPRESS_PORT + "/all-events/info";
 
 
 function Decodeuint8arr(uint8array) {
@@ -33,7 +33,7 @@ export default function ListEvents(prop) {
     }
 
     function filterEvents() {
-        if(prop.inputText===""){
+        if (prop.inputText === "") {
             return allEventsList;
         }
         const filtered = allEventsList.filter((e) => {
