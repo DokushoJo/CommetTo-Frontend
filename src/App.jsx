@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useRef, useState } from 'react'
 import './App.css'
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -6,12 +6,26 @@ import { Save } from './components/Save';
 import { Edit } from './components/Edit';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
+import {sessionData} from "./util/util";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
+	const [selectedEventId, setSelectedEventId] = useState(null)
 
-	// Helper function
+	//Jsx handle functions
+
+	// ADD BUTTON CLICK
+	const dialogRef = useRef(null);
+	const toggleAdd = () =>  {
+		if(!dialogRef.current){
+			return;
+		}
+		dialogRef.current.hasAttribute("open") ? dialogRef.current.close() 
+		: dialogRef.current.showModal();
+	};
+
+	// LIST 
 	function sendEventIdToRightSide(EventId) {
 		setSelectedEventId(EventId);
 	}
@@ -47,34 +61,11 @@ function App() {
 				<div className='flex'>
 					<div className='h-screen'>
 						<LeftSide sendEventIdToRightSide={sendEventIdToRightSide}/>
-						<div className='absolute flex tile-bg Add-Button--size tile-shadow bottom-0'>
-                    		<div className='m-auto'>
-								<div className='m-2 h-12 rounded-lg tile-shadow'>
-									{/* Add Event Button Dialog box */}
-									<div>
-										<button onClick={()=>{
-											setDialogContent(<Save />)
-											toggleAdd()	}}> ADD EVENT </button>
-
-										<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
-											if(e.currentTarget === e.target){
-												toggleAdd(); }}}>
-													{dialogContent}</dialog>
-									</div>
-
-										{/* Edit Event Button Dialog box */}
-										<div >
-										<button onClick={()=>{
-											setDialogContent(<Edit />)
-											toggleAdd()	}}> EDIT EVENT </button>
-
-										<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
-											if(e.currentTarget === e.target){
-												toggleAdd(); }}}>
-													{dialogContent}</dialog>
-									</div>
-                    			</div>
-							</div>
+						<div className='absolute flex settings--width-height bottom-0 text-white tile-bg'>
+                    		<div className='m-auto'>Settings</div>
+							<div className='m-2 h-20 float-right rounded-lg tile-inner-bg'>
+                        		<div className='m-2'>Add Event Button</div>
+                    		</div>
                 		</div>
 					</div>
 					<RightSide selectedEventId={selectedEventId}/>
@@ -86,4 +77,4 @@ function App() {
 		)	
 }
 
-export default App
+export default App;

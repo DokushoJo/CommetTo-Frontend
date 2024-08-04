@@ -96,8 +96,7 @@ const handleSubmitData = async (e) => {
               
 
               {/* EDIT BUTTON */}
-              <div >
-              <div >
+              <div>
               <button 
                   onClick={handleClick}
                   type="submit"
