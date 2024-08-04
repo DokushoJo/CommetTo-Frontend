@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState} from 'react'
 import './App.css'
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -7,6 +7,7 @@ import { EditEvent } from './components/EditEvent';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
 import {sessionData} from "./util/util";
+import AddNewEvent from './components/AddNewEvent';
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -82,6 +83,21 @@ function App() {
 								</div>
 							</div>
 						</div>
+
+
+								{/* Add Event Button Dialog box */}
+								<div >
+									<button onClick={()=>{
+									setDialogContent(<AddNewEvent />)
+									toggleAdd()	}}> ADD EVENT </button>
+
+									<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
+									if(e.currentTarget === e.target){
+										toggleAdd(); }}}>
+										{dialogContent}</dialog>
+								</div>
+                    		</div>
+                		</div>
 					</div>
 					<RightSide selectedEventId={selectedEventId} />
 				</div>
