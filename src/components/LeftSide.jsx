@@ -31,7 +31,6 @@ export default function LeftSide(prop) {
                         <ListEvents sendEventIdToRightSide={prop.sendEventIdToRightSide} {...{inputText}}/>
                     </div>
                 </div>
-                <AddNewEvent></AddNewEvent>
             </div>
         </>
     )
