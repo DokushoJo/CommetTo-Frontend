@@ -1,4 +1,4 @@
-# CommetTo-Frontend &middot; [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Static Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]       [![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]
+# CommetTo-Frontend &middot; [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Static Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)]<br>[![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)]
 
 [![forthebadge](https://forthebadge.com/images/featured/featured-built-with-love.svg)](https://forthebadge.com)
 
@@ -14,9 +14,9 @@ Support for sharing information about the events like descriptions and time sche
 A quick introduction of the minimal setup you need to initalize the dev tool to start building the project.
 
 ```
-$ npm create vite@latest <br>
-$ npm install<br>
-$ npm run dev<br>
+$ npm create vite@latest 
+$ npm install
+$ npm run dev
 ```
 
 ### Built With
@@ -24,9 +24,9 @@ $ npm run dev<br>
 Our Front-End Tech stack: <br>
 
 ```
-• React <br>
-• Javascript <br>
-• Tailwind CSS <br>
+• React
+• Javascript
+• Tailwind CSS
 ```
 
 #### Prerequisites
