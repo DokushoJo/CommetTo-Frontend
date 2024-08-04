@@ -18,6 +18,8 @@ export default function RightSide(prop) {
 
     return (
         <>
+        	{/* Add Event Button Dialog box */}
+          
             <div className="flex-col w-full h-screen overflow-auto border-l border-black">
                 {currentView}
             </div>

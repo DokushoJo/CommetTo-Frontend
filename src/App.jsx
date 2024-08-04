@@ -28,6 +28,7 @@ function App() {
 	function sendEventIdToRightSide(EventId) {
 		setSelectedEventId(EventId);
 	}
+	
 
 	//UseState
 	const [dialogContent, setDialogContent] = useState(null); //add button click
@@ -64,6 +65,7 @@ function App() {
 										{dialogContent}</dialog>
 								</div>
                     		
+
                 		</div>
 					</div>
 					<RightSide selectedEventId={selectedEventId}/>
