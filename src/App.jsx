@@ -9,6 +9,7 @@ import { Register } from './components/Register';
 import {sessionData} from "./util/util";
 import AddNewEvent from './components/AddNewEvent';
 
+
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {

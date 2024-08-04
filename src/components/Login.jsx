@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
+import logoTwo from '../image/commeto.png'
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -50,6 +51,9 @@ export function Login() {
 
 	return (
 		<>
+			<div className='flex justify-center'>
+				<img className='-mb-32  size-2/12' src={logoTwo} />
+			</div>
 			<div className="leftside">
 				<div className="flex mt-10 min-h-full flex-1 justify-center px-6 py-12 lg:px-8">
 					<div className="w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl">
