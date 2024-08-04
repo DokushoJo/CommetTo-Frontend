@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import TimeScheduleList from "./TimeScheduleList";
+import { sessionData, setHeader } from "../util/util";
 
-const BACKEND_URL = import.meta.env.VITE_EXPRESS_BASE_URL
-	+ ":"
-	+ import.meta.env.VITE_EXPRESS_PORT
+const BACKEND_URL =
+	import.meta.env.VITE_APP_BASE_URL;
 
 export default function AddNewEvent() {
 	const [addData, setAddData] = useState({
@@ -14,24 +14,6 @@ export default function AddNewEvent() {
 	});
 
 	const shcedulesRef = useRef(null)
-
-	// const submitData = () => {
-	// 	const postObj = {
-	// 		"overview": {
-	// 			"name": addData.name,
-	// 			"description": addData.description,
-	// 			"date": new Date(addData.date),
-	// 			"updated_at": new Date()
-	// 		},
-	// 		"schedule": getChildState().map((element) => {
-	// 			return {
-	// 				"name": element.name,
-	// 				"time": new Date(addData.date + ":" + element.time),
-	// 				"description": element.description
-	// 			}
-	// 		}),
-	// 	}
-	// };
 
 	const handleEventsData = (key, e) => {
 		e.preventDefault();
@@ -48,6 +30,7 @@ export default function AddNewEvent() {
 				"date": new Date(addData.date),
 				"updated_at": new Date()
 			},
+			"user_id":sessionData("id").id,
 			"schedule": getChildState().map((element) => {
 				return {
 					"name": element.title,
@@ -57,11 +40,10 @@ export default function AddNewEvent() {
 			}),
 		}
 		e.preventDefault();
-
-		await axios
-			.post(BACKEND_URL + `/event`, postObj)
-			.then((res) => console.log(res.data))
-			.catch((err) => console.log(err));
+		const message = setHeader("POST", postObj);
+		const response = await fetch(BACKEND_URL + "/event", message).then((res) => {
+			alert("Saved!");
+		});
 	};
 
 	function getChildState() {

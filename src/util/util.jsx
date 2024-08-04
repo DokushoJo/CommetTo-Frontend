@@ -9,7 +9,8 @@ export const sessionData = () => {
 export const setHeader = (method, body) => {
 	return {
 		headers: {
-			Authorization: sessionData().token,
+			"Authorization": sessionData().token,
+			"Content-Type": "application/json",
 		},
 		method: method,
 		body: JSON.stringify(body),

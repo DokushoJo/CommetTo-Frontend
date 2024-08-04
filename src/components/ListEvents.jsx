@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
 import './ListEvents.css'
-import {setHeader} from "../util/util";
+import {setHeader, sessionData} from "../util/util";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
 
@@ -21,8 +21,9 @@ export default function ListEvents(prop) {
     }, [])
 
     async function fetchListEvents() {
+        const user_id = sessionData("id").id;
         const fetchContent = setHeader('GET');
-        const fetched = await fetch(LISTS_URL, fetchContent);
+        const fetched = await fetch(LISTS_URL + `/${user_id}`, fetchContent);
         const createdIdInUint8Arr = []
         for await (let chunk of fetched.body) {
             createdIdInUint8Arr.push(chunk)
