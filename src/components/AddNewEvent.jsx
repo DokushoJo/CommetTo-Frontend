@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import axios from "axios";
 import TimeScheduleList from "./TimeScheduleList";
+import { sessionData } from "../util/util";
 
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BASE_URL
 	+ ":"
@@ -48,6 +49,7 @@ export default function AddNewEvent() {
 				"date": new Date(addData.date),
 				"updated_at": new Date()
 			},
+			"user_id": window.localStorage.getItem("id"),
 			"schedule": getChildState().map((element) => {
 				return {
 					"name": element.title,
@@ -58,10 +60,15 @@ export default function AddNewEvent() {
 		}
 		e.preventDefault();
 
-		await axios
-			.post(BACKEND_URL + `/event`, postObj)
-			.then((res) => console.log(res.data))
-			.catch((err) => console.log(err));
+		await fetch(BACKEND_URL + `/event`,
+			{
+				headers: {
+					Authorization: sessionData().token,
+					"Content-Type": "application/json",
+				},
+				method: "POST",
+				body: JSON.stringify(postObj)
+			})
 	};
 
 	function getChildState() {
@@ -74,7 +81,7 @@ export default function AddNewEvent() {
 			<div>
 				<div className='w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
 					<h1 className='text-center mt-3 mb-8 font-extrabold text-[#2d7fa3] text-3xl'>Add Event</h1>
-					
+
 
 					<form onSubmit={handleSumbitData}>
 						<div className="mb-5">
@@ -150,8 +157,8 @@ export default function AddNewEvent() {
 								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   				w-32 flex-none  hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-700"
 							>
-							Save</button>
-						</div>	
+								Save</button>
+						</div>
 					</form>
 				</div>
 			</div>
