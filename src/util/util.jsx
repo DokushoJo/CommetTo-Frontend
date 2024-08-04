@@ -29,7 +29,7 @@ export const formatDate = (dateServer) => {
 
 export const formatTime = (dateServer) => {
 	const date = new Date(dateServer);
-	let timePart = [date.getHours(), date.getMinutes(), date.getSeconds()]
+	let timePart = [date.getHours(), date.getMinutes()]
 		.map((n) => n.toString().padStart(2, "0"))
 		.join(":");
 	return timePart;
