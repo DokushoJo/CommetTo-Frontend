@@ -1,11 +1,9 @@
 import { useRef, useState } from "react";
-import axios from "axios";
 import TimeScheduleList from "./TimeScheduleList";
 import { sessionData } from "../util/util";
 
-const BACKEND_URL = import.meta.env.VITE_EXPRESS_BASE_URL
-	+ ":"
-	+ import.meta.env.VITE_EXPRESS_PORT
+const BACKEND_URL =
+	import.meta.env.VITE_APP_BASE_URL;
 
 export default function AddNewEvent() {
 	const [addData, setAddData] = useState({
@@ -15,24 +13,6 @@ export default function AddNewEvent() {
 	});
 
 	const shcedulesRef = useRef(null)
-
-	// const submitData = () => {
-	// 	const postObj = {
-	// 		"overview": {
-	// 			"name": addData.name,
-	// 			"description": addData.description,
-	// 			"date": new Date(addData.date),
-	// 			"updated_at": new Date()
-	// 		},
-	// 		"schedule": getChildState().map((element) => {
-	// 			return {
-	// 				"name": element.name,
-	// 				"time": new Date(addData.date + ":" + element.time),
-	// 				"description": element.description
-	// 			}
-	// 		}),
-	// 	}
-	// };
 
 	const handleEventsData = (key, e) => {
 		e.preventDefault();
