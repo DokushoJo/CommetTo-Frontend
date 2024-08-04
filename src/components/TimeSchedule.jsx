@@ -32,11 +32,12 @@ const TimeSchedule = (prop) => {
 							onChange={(e) => { prop.handleOnChangeTitle(e, indexInList) }}
 						/>
 						<input
-							className="w-28 block rounded-m border-slate-300 shadow-sm"
+							className="w-12 block rounded-m border-slate-300 shadow-sm"
 							value={prop.description}
 							onChange={(e) => { prop.handleOnChangeDescription(e, indexInList) }}
 						/>
 					</div>
+					
 					<p onClick={() => { prop.deleteSchedule(indexInList) }} className="absolute right-0 top-0 text-red-600">Delete</p>
 				</div>
 			</div>
