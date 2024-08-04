@@ -7,6 +7,7 @@ import { Save } from './components/Save';
 import { Edit } from './components/Edit';
 import { Login } from './components/Login';
 import { Register } from './components/Register';
+import {sessionData} from "./util/util";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -16,7 +17,6 @@ function App() {
 	const [dialogContent, setDialogContent] = useState(null); //add button click
 	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
 	const [selectedEventId, setSelectedEventId] = useState(null)
-	
 
 	//Jsx handle functions
 
