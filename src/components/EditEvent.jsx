@@ -85,7 +85,7 @@ export function EditEvent(prop) {
       <div>
         <div className="mt-10 mb-16 container-add flex-row justify-self-center ml-72 max-w-md h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl">
           <h1 className="mt-3 mb-8 font-extrabold text-[#7a68bf] text-3xl">
-            Add Event
+            Edit Event
           </h1>
 
           <form onSubmit={handleSumbitData}>

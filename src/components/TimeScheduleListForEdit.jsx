@@ -73,16 +73,18 @@ const TimeScheduleListForEdit = forwardRef(function TimeScheduleListForEdit(prop
 					}}>
 					</TimeSchedule>);
 				})}
-				<p onClick={() => { handleAddSchedule() }} className="text-green-600 w-8">
-					Add
-				</p>
-				<p onClick={() => { sortSchedules() }} className="text-green-600 w-20">
-					Sort By Time
-				</p>
+				<div className="flex">
+					<p onClick={() => { handleAddSchedule() }} className="text-green-600 w-8">
+						Add
+					</p>
+					<p onClick={() => { sortSchedules() }} className="text-green-600 w-26 pl-5">
+						Sort By Time
+					</p>
+				</div>
 			</div>
 		</>
 	);
 });
 
 // export default TimeScheduleListForEdit;
-export {TimeScheduleListForEdit};
+export { TimeScheduleListForEdit };
