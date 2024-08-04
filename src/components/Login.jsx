@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
-export function Login({ FormHandle }) {
+export function Login() {
+	const navigate = useNavigate();
 	const { login } = useAuth();
 	// cosnt [passwordList, setPasswordList] = useState([]);
 	const [addData, setAddData] = useState({
@@ -140,7 +142,7 @@ export function Login({ FormHandle }) {
 
 							<p
 								style={{ cursor: "pointer" }}
-								onClick={() => FormHandle("signup")}
+								onClick={() => navigate("/register", { replace: true })}
 								className="mt-3 text-center text-sm text-gray-500"
 							>
 								Register New User{""}

@@ -11,7 +11,7 @@ export default function SearchBox(prop) {
 
     return (
         <>
-            <input onChange={inputHandler}></input>
+            <input className="rounded-lg p-1" onChange={inputHandler}></input>
         </>
     )
 

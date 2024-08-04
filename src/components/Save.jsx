@@ -100,14 +100,14 @@ const handleSumbitData = async (e) => {
               
 
               {/* ADD BUTTON */}
-              <div >
+              <div>
               <button 
                   onClick={handleClick}
                   type="submit"
                   className="mt-3 ml-24 select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-cyan-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   w-32 flex-none 
-                  hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 
-                  focus-visible:outline-offset-2 focus-visible:outline-cyan-800">
+                  hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 
+                  focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                   {editButton}
               </button>
               </div>    

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
+import './ListEvents.css'
 import {setHeader} from "../util/util";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
@@ -52,7 +53,6 @@ export default function ListEvents(prop) {
                     filterd.map((event) => {
                         return (
                             <div className="eventTile" key={event.id} id={event.id} onClick={handleSendEventIdToRightSide}>
-                                id: {event.id} <br />
                                 name: {event.name} <br />
                                 date: {event.date} <br /><br />
                             </div>
