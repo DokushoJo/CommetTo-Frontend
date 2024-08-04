@@ -2,6 +2,7 @@
 
 import { Routes, Route, useRoutes } from "react-router-dom";
 import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 import HomePage from "./App";
 
 import "./App.css";
@@ -22,6 +23,7 @@ function App() {
 					element={<ProtectedRoute>{<HomePage />}</ProtectedRoute>}
 				/>
 				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
 				<Route
 					path="/secret"
 					element={
