@@ -90,6 +90,21 @@ export default function FocusView(prop) {
 									</div>
 								</div>
 							</div>
+                            <div className='ml-96 mb-1 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
+								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
+								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+                  				w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700'>
+                                
+
+                            <button className='ml-1 p-1 mt-1 text-sm' onClick={()=>{
+									setDialogContent(<Edit />)
+									toggleAdd()	}}> EDIT EVENT </button>
+
+									<dialog className='rounded-lg' ref={dialogRef} onClick={(e) => {
+									if(e.currentTarget === e.target){
+										toggleAdd(); }}}>
+										{dialogContent}</dialog> 
+                            </div>
 						</div>
 					</div>
 				) : null}
