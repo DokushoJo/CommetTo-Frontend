@@ -54,7 +54,7 @@ export function Login() {
 				<div className="flex mt-10 min-h-full flex-1 justify-center px-6 py-12 lg:px-8">
 					<div className="w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl">
 						<div className="sm:mx-auto sm:w-full sm:max-w-sm">
-							<h2 className="text-[#2d7fa3] text-center text-2xl font-bold leading-9 tracking-tight ">
+							<h2 className="text-[#f4b332] text-center text-2xl font-bold leading-9 tracking-tight ">
 								User Login
 							</h2>
 						</div>
@@ -126,14 +126,14 @@ export function Login() {
 										type="submit"
 										onClick={handleAddPassword}
 										className="p-3 mt-20 select-none rounded-lg bg-gray-400 py-3 px-6 
-                            text-center align-middle font-sans text-xs 
-                            font-bold uppercase text-white shadow-md shadow-gray-600/50
-                            transition-all hover:shadow-lg hover:shadow-blue-500/40 
-                            focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none 
-                            disabled:pointer-events-none disabled:opacity-50 
-                            disabled:shadow-none flex w-full justify-center  leading-6 hover:bg-cyan-700
-                            focus-visible:outline focus-visible:outline-2 
-                            focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+										text-center align-middle font-sans text-xs 
+										font-bold uppercase text-white shadow-md shadow-gray-600/50
+										transition-all hover:shadow-lg hover:shadow-black-500/40 
+										focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none 
+										disabled:pointer-events-none disabled:opacity-50 
+										disabled:shadow-none flex w-full justify-center  leading-6 hover:bg-amber-500
+										focus-visible:outline focus-visible:outline-2 
+										focus-visible:outline-offset-2 focus-visible:outline-amber-500"
 									>
 										Sign in
 									</button>

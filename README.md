@@ -17,6 +17,9 @@ A quick introduction of the minimal setup you need to initalize the dev tool to 
 $ npm create vite@latest 
 $ npm install
 $ npm run dev
+$ npm create vite@latest 
+$ npm install
+$ npm run dev
 ```
 
 ### Built With
