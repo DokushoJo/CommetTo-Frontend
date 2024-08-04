@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 import './FocusView.css';
+import { setHeader } from "../util/util";
 
 export default function FocusView(prop) {
     const selectedEventId = prop.selectedEventId;
@@ -17,7 +18,11 @@ export default function FocusView(prop) {
 
     // Helper functions
     async function changeEventView(EventId) {
-        const fetchedEvent = await fetch(VITE_APP_BASE_URL + "/event/" + EventId);
+        const fetchContent = setHeader("GET");
+        const fetchedEvent = await fetch(
+					VITE_APP_BASE_URL + "/event/" + EventId,
+					fetchContent
+				);
         const eventJSONParsed = await fetchedEvent.json();
         setCurrentDisplayEvent(eventJSONParsed);
     }

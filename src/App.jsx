@@ -1,4 +1,4 @@
-import { useRef, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import './App.css'
 import LeftSide from './components/LeftSide';
 import RightSide from './components/RightSide';
@@ -11,8 +11,6 @@ import {sessionData} from "./util/util";
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
-	const [selectedEventId, setSelectedEventId] = useState(null)
-
 	//Jsx handle functions
 
 	// ADD BUTTON CLICK
@@ -33,22 +31,7 @@ function App() {
 	//UseState
 	const [dialogContent, setDialogContent] = useState(null); //add button click
 	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
-	const [selectedEventId, setSelectedEventId] = useState(null)
-	
-
-	//Jsx handle functions
-
-	// ADD BUTTON CLICK
-	const dialogRef = useRef(null);
-	const toggleAdd = () =>  {
-		if(!dialogRef.current){
-			return;
-		}
-		dialogRef.current.hasAttribute("open") ? dialogRef.current.close() 
-		: dialogRef.current.showModal();
-	};
-
-	
+	const [selectedEventId, setSelectedEventId] = useState(null)	
 
 	return (
 		<>
