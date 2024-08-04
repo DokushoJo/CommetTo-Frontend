@@ -11,7 +11,6 @@ const TimeScheduleList = forwardRef(function TimeScheduleList(props, ref) {
 			title: "",
 			description: ""
 		}]);
-		// getScheduleColumn(scheduleColumn)
 	};
 
 	const handleOnChangeTime = (e, index) => {
