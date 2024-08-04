@@ -48,15 +48,15 @@ export default function FocusView(prop) {
 					<div className="event-Focus" key={currentDisplayEvent.id}>
 						<div className="event-Focus__Overview">
 							<div className="event-Focus__Overview-container">
-								<div className="Overview-title">
+								<div className="Overview-title ">
 									<div className="flex mb-4">
 										<img
 											src="./../../images/Overview_icon.png"
-											className="h-12 pl-2"
+											className="ml-2 h-12 p-1"
 										/>
-										<h3 className="pl-2.5 text-5xl">Overview</h3>
+										<h3 className="mt-2 pl-2 text-4xl">Overview</h3>
 									</div>
-									<div className="event-Focus__Overview-box">
+									<div className="event-Focus__Overview-box p-6 ">
 										<p>{currentDisplayEvent.overview.name}</p>
 										<p>{formatDate(currentDisplayEvent.overview.date)}</p>
 										<p>{currentDisplayEvent.overview.description}</p>
@@ -70,17 +70,16 @@ export default function FocusView(prop) {
 									<div className="flex mb-4">
 										<img
 											src="./../../images/schedule_icon.png"
-											className="h-12 pl-2"
+											className="ml-2 h-10 pl-2"
 										/>
-										<h3 className="pl-2.5 text-5xl">Schedule</h3>
+										<h3 className="pl-2.5 text-4xl">Schedule</h3>
 									</div>
 									<div className="event-Focus__Schedule-box">
 										{currentDisplayEvent.schedule.map((timestampSchedule) => {
 											return (
 												<div
-													className="event-Focus__Schedule-box__Timestamp"
-													key={timestampSchedule.id}
-												>
+													className="event-Focus__Schedule-box__Timestamp p-4"
+													key={timestampSchedule.id}>
 													<p>{formatTime(timestampSchedule.time)}</p>
 													<p>{timestampSchedule.name}</p>
 													<p>{timestampSchedule.description}</p>
@@ -90,7 +89,7 @@ export default function FocusView(prop) {
 									</div>
 								</div>
 							</div>
-                            <div className='ml-96 mb-1 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
+                            <div className='ml-96 -mr-96 mb-1 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
 								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
 								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   				w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700'>

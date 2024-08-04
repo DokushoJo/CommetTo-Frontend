@@ -1,3 +1,8 @@
+body{
+    font-family: 'Codec Pro', sans-serif;
+    font-weight: 400;
+}
+
 .event-Focus {
     text-align: center;
     height: 100vh;
