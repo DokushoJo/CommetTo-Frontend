@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import SearchBox from "./SearchBox";
 import './ListEvents.css'
-import {setHeader, sessionData} from "../util/util";
+import {setHeader, sessionData, formatDate} from "../util/util";
 
 const LISTS_URL =
 	import.meta.env.VITE_APP_BASE_URL +	"/all-events/info";
@@ -56,7 +56,7 @@ export default function ListEvents(prop) {
                         return (
                             <div className="eventTile" key={event.id} id={event.id} onClick={handleSendEventIdToRightSide}>
                                 name: {event.name} <br />
-                                date: {event.date} <br /><br />
+                                date: {formatDate(event.date)} <br /><br />
                             </div>
                         )
                     }) : null
