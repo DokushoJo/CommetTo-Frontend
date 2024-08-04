@@ -2,6 +2,7 @@ import { createContext, useState } from 'react'
 import ListEvents from './ListEvents'
 import SearchBox from './SearchBox'
 import "./LeftSide.css"
+import AddNewEvent from './AddNewEvent'
 
 export default function LeftSide(prop) {
     const [count, setCount] = useState(0)
@@ -24,6 +25,7 @@ export default function LeftSide(prop) {
                         <ListEvents sendEventIdToRightSide={prop.sendEventIdToRightSide} {...{inputText}}/>
                     </div>
                 </div>
+                <AddNewEvent></AddNewEvent>
             </div>
         </>
     )
