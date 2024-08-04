@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
-import axios from "axios";
 import TimeScheduleList from "./TimeScheduleList";
-import { sessionData, setHeader } from "../util/util";
+import { sessionData } from "../util/util";
 
 const BACKEND_URL =
 	import.meta.env.VITE_APP_BASE_URL;
@@ -30,7 +29,7 @@ export default function AddNewEvent() {
 				"date": new Date(addData.date),
 				"updated_at": new Date()
 			},
-			"user_id":sessionData("id").id,
+			"user_id": window.localStorage.getItem("id"),
 			"schedule": getChildState().map((element) => {
 				return {
 					"name": element.title,
@@ -40,10 +39,16 @@ export default function AddNewEvent() {
 			}),
 		}
 		e.preventDefault();
-		const message = setHeader("POST", postObj);
-		const response = await fetch(BACKEND_URL + "/event", message).then((res) => {
-			alert("Saved!");
-		});
+
+		await fetch(BACKEND_URL + `/event`,
+			{
+				headers: {
+					Authorization: sessionData().token,
+					"Content-Type": "application/json",
+				},
+				method: "POST",
+				body: JSON.stringify(postObj)
+			})
 	};
 
 	function getChildState() {
@@ -132,8 +137,8 @@ export default function AddNewEvent() {
 								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   				w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
 							>
-							Save</button>
-						</div>	
+								Save</button>
+						</div>
 					</form>
 				</div>
 			</div>

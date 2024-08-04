@@ -2,45 +2,51 @@ import { useEffect, useState, useRef } from "react";
 const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 import "./FocusView.css";
 import { formatDate, formatTime, setHeader } from "../util/util";
+
 import { Edit } from "./Edit.jsx";
 import { Delete } from '../components/Delete.jsx';
 
+import { EditEvent } from "./EditEvent.jsx";
+
+
 export default function FocusView(prop) {
-	const selectedEventId = prop.selectedEventId;
+    const selectedEventId = prop.selectedEventId;
 
-	// useStates
-	const [currentDisplayEvent, setCurrentDisplayEvent] = useState(null);
-	const [dialogContent, setDialogContent] = useState(null); //add button click
+    // useStates
+    const [currentDisplayEvent, setCurrentDisplayEvent] = useState(null);
+    const [dialogContent, setDialogContent] = useState(null); //add button click
 
-	// useEffects
-	useEffect(() => {
-		if (selectedEventId !== null) {
-			changeEventView(selectedEventId);
-		}
-	}, [selectedEventId]);
+    // useEffects
+    useEffect(() => {
+        if (selectedEventId !== null) {
+            changeEventView(selectedEventId);
+        }
+    }, [selectedEventId]);
 
-	// Helper functions
+    // Helper functions
 
-	// ADD BUTTON CLICK
-	const dialogRef = useRef(null);
-	const toggleAdd = () => {
-		if (!dialogRef.current) {
-			return;
-		}
-		dialogRef.current.hasAttribute("open")
-			? dialogRef.current.close()
-			: dialogRef.current.showModal();
-	};
+    // ADD BUTTON CLICK
+    const dialogRef = useRef(null);
+    const toggleAdd = () => {
+        if (!dialogRef.current) {
+            return;
+        }
+        dialogRef.current.hasAttribute("open")
+            ? dialogRef.current.close()
+            : dialogRef.current.showModal();
+    };
 
-	async function changeEventView(EventId) {
-		const fetchContent = setHeader("GET");
-		const fetchedEvent = await fetch(
-			VITE_APP_BASE_URL + "/event/" + EventId,
-			fetchContent
-		);
-		const eventJSONParsed = await fetchedEvent.json();
-		setCurrentDisplayEvent(eventJSONParsed);
-	}
+    async function changeEventView(EventId) {
+        const fetchContent = setHeader("GET");
+        const fetchedEvent = await fetch(
+            VITE_APP_BASE_URL + "/event/" + EventId,
+            fetchContent
+        );
+        const eventJSONParsed = await fetchedEvent.json();
+        console.log(eventJSONParsed)
+        setCurrentDisplayEvent(eventJSONParsed);
+    }
+
 
 	return (
 		<>
@@ -110,7 +116,7 @@ export default function FocusView(prop) {
                           
                            
             
-                            
+                        
 						</div>
 					</div>
 				) : null}

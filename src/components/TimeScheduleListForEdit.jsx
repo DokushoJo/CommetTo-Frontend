@@ -1,9 +1,8 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import TimeSchedule from './TimeSchedule'
 
-// const TimeScheduleList = ({ scheduleList, isEditActive }) => {
-const TimeScheduleList = forwardRef(function TimeScheduleList(props, ref) {
-	const [scheduleColumn, setScheduleColumn] = useState([]);
+const TimeScheduleListForEdit = forwardRef(function TimeScheduleListForEdit(prop, ref) {
+	const [scheduleColumn, setScheduleColumn] = useState(prop.prop.beforeUpdate);
 
 	const handleAddSchedule = () => {
 		setScheduleColumn([...scheduleColumn, {
@@ -87,4 +86,5 @@ const TimeScheduleList = forwardRef(function TimeScheduleList(props, ref) {
 	);
 });
 
-export default TimeScheduleList;
+// export default TimeScheduleListForEdit;
+export { TimeScheduleListForEdit };
