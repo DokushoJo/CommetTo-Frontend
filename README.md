@@ -14,9 +14,9 @@ Support for sharing information about the events like descriptions and time sche
 A quick introduction of the minimal setup you need to initalize the dev tool to start building the project.
 
 ```
-$ npm create vite@latest <br>
-$ npm install<br>
-$ npm run dev<br>
+$ npm create vite@latest 
+$ npm install
+$ npm run dev
 ```
 
 ### Built With
@@ -24,9 +24,9 @@ $ npm run dev<br>
 Our Front-End Tech stack: <br>
 
 ```
-• React <br>
-• Javascript <br>
-• Tailwind CSS <br>
+• React 
+• Javascript 
+• Tailwind CSS 
 ```
 
 #### Prerequisites
