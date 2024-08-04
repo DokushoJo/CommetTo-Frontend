@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Axios } from 'axios'
 import axios from 'axios'
 
 
@@ -44,9 +43,16 @@ const handleSubmitData = async (e) => {
         description: post.description,
         time: post.time,
       };
+
+      //check if all inputs are filled
+      if(!post.name || !post.description || !post.time){
+        console.log('Input required!')
+        return;
+    }
       console.log(userData)
+
     
-    axios.put(BACKEND_URL , userData)
+    await axios.put(BACKEND_URL , userData)
     .then(res => console.log(res.data))
     .catch(err => console.log(err))
 }
@@ -60,8 +66,8 @@ const handleSubmitData = async (e) => {
     {/* Add and input data */}
 
     <div> 
-      <div className='mt-10 mb-16 container-add flex-row justify-self-center ml-72 max-w-md h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
-        <h1 className='mt-3 mb-8 font-extrabold text-[#7a68bf] text-3xl'>Edit Event</h1>
+    <div className='w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
+    <h1 className='text-center mt-3 mb-8 font-extrabold text-[#2d7fa3] text-3xl'>Edit Event</h1>
          
          <form onSubmit={handleSubmitData}>
               {/* EVENTNAME */}
@@ -90,16 +96,15 @@ const handleSubmitData = async (e) => {
               
 
               {/* EDIT BUTTON */}
-              <div>
+              <div >
+              <div >
               <button 
                   onClick={handleClick}
                   type="submit"
-                  data-twe-ripple-init
-                  data-twe-ripple-color="light"
-                  className=" select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-indigo-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+                  className="mt-3 ml-24 select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-cyan-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   w-32 flex-none 
-                  hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 
-                  focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 
+                  focus-visible:outline-offset-2 focus-visible:outline-cyan-700">
                   {editButton}
               </button>
               </div>    

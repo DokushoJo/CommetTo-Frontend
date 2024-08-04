@@ -8,6 +8,8 @@ const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 export function Save() {
 //useState
 
+const [add,setAdd] = useState(false);
+const [add,setAdd] = useState(false);
 const [editButton, setEditButton] = useState('Add');   
 const [addData, setAddData] = useState({
   name: '',
@@ -18,8 +20,6 @@ const [addData, setAddData] = useState({
 //useEffect
 
 //handler functions
-
-// checks password
 
 const handleClick = () => {
     setEditButton(editButton === 'Add' ? 'Saved' : 'Saved');
@@ -36,7 +36,6 @@ const handleEventsData = (key, e) => {
 
 //function data sending to Database
 const handleSumbitData = async (e) => {
-  console.log(addData);
   e.preventDefault();
   
   const userData = {
@@ -45,16 +44,22 @@ const handleSumbitData = async (e) => {
     time: addData.time,
   };
   
-  await axios.post(BACKEND_URL , userData)
-  .then(res => console.log(res.data))
-  .catch(err => console.log(err))
+  if(!addData.name || !addData.description || !addData.time){
+    console.log('Input required!')
+    return;
+}
+  console.log(userData)
 
-  // try{
-  //   const response = await axios.post( BACKEND_URL + 'event', userData);
-  //   console.log(response);
-  // } catch (error){
-  //   return 'Invalid Input';
-  // }
+  try{
+    const response = await axios.post( BACKEND_URL + 'event', userData);
+    console.log(response);
+  } catch (error){
+    return 'Invalid Input';
+  }
+
+  // await axios.post(BACKEND_URL + 'event', userData)
+  // .then(res => console.log(res.data))
+  // .catch(err => console.log(err))
 }
 
 
@@ -66,8 +71,8 @@ const handleSumbitData = async (e) => {
     {/* Add and input data */}
 
     <div> 
-      <div className='mt-10 mb-16 container-add flex-row justify-self-center ml-72 max-w-md h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
-        <h1 className='mt-3 mb-8 font-extrabold text-[#7a68bf] text-3xl'>Add Event</h1>
+      <div className='w-96 container-add flex-row justify-self-center  h-auto rounded-lg dark:bg-gray-100 p-10 shadow-2xl'>
+        <h1 className='text-center mt-3 mb-8 font-extrabold text-[#2d7fa3] text-3xl'>Add Event</h1>
          
          <form onSubmit={handleSumbitData}>
               {/* EVENTNAME */}
@@ -96,16 +101,17 @@ const handleSumbitData = async (e) => {
               
 
               {/* ADD BUTTON */}
-              <div>
+              <div >
+              <div >
               <button 
                   onClick={handleClick}
                   type="submit"
-                  data-twe-ripple-init
-                  data-twe-ripple-color="light"
-                  className=" select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-indigo-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+                  className="mt-3 ml-24 select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-cyan-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   w-32 flex-none 
-                  hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 
-                  focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                  hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 
+                  focus-visible:outline-offset-2 focus-visible:outline-cyan-800">
+                  hover:bg-cyan-700 focus-visible:outline focus-visible:outline-2 
+                  focus-visible:outline-offset-2 focus-visible:outline-cyan-800">
                   {editButton}
               </button>
               </div>    
