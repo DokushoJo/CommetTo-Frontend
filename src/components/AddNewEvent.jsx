@@ -15,24 +15,6 @@ export default function AddNewEvent() {
 
 	const shcedulesRef = useRef(null)
 
-	// const submitData = () => {
-	// 	const postObj = {
-	// 		"overview": {
-	// 			"name": addData.name,
-	// 			"description": addData.description,
-	// 			"date": new Date(addData.date),
-	// 			"updated_at": new Date()
-	// 		},
-	// 		"schedule": getChildState().map((element) => {
-	// 			return {
-	// 				"name": element.name,
-	// 				"time": new Date(addData.date + ":" + element.time),
-	// 				"description": element.description
-	// 			}
-	// 		}),
-	// 	}
-	// };
-
 	const handleEventsData = (key, e) => {
 		e.preventDefault();
 		const value = e.target.value;
@@ -62,10 +44,6 @@ export default function AddNewEvent() {
 		const response = await fetch(BACKEND_URL + "/event", message).then((res) => {
 			alert("Saved!");
 		});
-		// await axios
-		// 	.post(BACKEND_URL + `/event`, postObj)
-		// 	.then((res) => console.log(res.data))
-		// 	.catch((err) => console.log(err));
 	};
 
 	function getChildState() {
