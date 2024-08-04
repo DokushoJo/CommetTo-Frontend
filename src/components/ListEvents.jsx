@@ -3,7 +3,8 @@ import SearchBox from "./SearchBox";
 import './ListEvents.css'
 import {setHeader, sessionData} from "../util/util";
 
-const LISTS_URL = import.meta.env.VITE_EXPRESS_BASE_URL + ":" + import.meta.env.VITE_EXPRESS_PORT + "/all-events/info";
+const LISTS_URL =
+	import.meta.env.VITE_APP_BASE_URL +	"/all-events/info";
 
 
 function Decodeuint8arr(uint8array) {
