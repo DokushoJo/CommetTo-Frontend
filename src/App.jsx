@@ -34,12 +34,7 @@ function App() {
 	function sendEventIdToRightSide(EventId) {
 		setSelectedEventId(EventId);
 	}
-
-	//UseState
-	const [dialogContent, setDialogContent] = useState(null); //add button click
-	const [register, setRegister] = useState('login'); //switch form log in to register if no user account
-	const [selectedEventId, setSelectedEventId] = useState(null)	
-
+	
 	return (
 		<>
 
