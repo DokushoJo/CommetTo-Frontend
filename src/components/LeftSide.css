@@ -1,0 +1,19 @@
+.leftside--width {
+    width: 30rem;
+    max-width: 30rem;
+}
+
+.event-box--height-text-size {
+    height: 30rem;
+}
+
+.tile-shadow {
+    box-shadow: 1px 1px 5px 1px rgb(188, 188, 188);
+}
+
+.text-shadow {
+    text-shadow: 3px 2px 2px rgb(255, 165, 180);
+}
+
+
+
