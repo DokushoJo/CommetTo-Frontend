@@ -46,7 +46,6 @@ export default function ListEvents(prop) {
   }
 
   const [deleteEvent, setDeleteEvent] = useState(null);
-  const [deleteId, setDeleteId] = useState(null);
 
   useEffect(() => {
     handleDelete();
@@ -66,7 +65,7 @@ export default function ListEvents(prop) {
           Authorization: sessionData().token,
           "Content-Type": "application/json",
         },
-        method: "PUT",
+        method: "DELETE",
       });
 
       //   await axios.delete(VITE_APP_BASE_URL + "event", deleteEvent);
@@ -98,7 +97,7 @@ export default function ListEvents(prop) {
                     <div className="flex flex-column">
                       Group name: {event.name} <br />
                       Members: {formatDate(event.date)} <br />
-                      Description: Put a description here
+                      Description: {event.description}
                       <br />
                     </div>
                     <br />

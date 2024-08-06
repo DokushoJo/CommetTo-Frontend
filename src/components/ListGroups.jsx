@@ -8,23 +8,22 @@ function Decodeuint8arr(uint8array) {
   return new TextDecoder("utf-8").decode(uint8array);
 }
 
-export default function ListGroups(prop) {
+export default function ListGroups() {
   const [allGroupsList, setAllGroupsList] = useState(null);
   const [memberInGroup, setMemberInGroup] = useState(null);
-  const filterd = filterEvents();
 
   useEffect(() => {
     fetchListGroups();
-  }, [allGroupsList]);
+  }, []);
 
   useEffect(() => {
     fetchListMembers();
-  }, [memberInGroup]);
+  }, [allGroupsList]);
 
   async function fetchListGroups() {
     const user_id = sessionData("id").id;
     const fetchContent = setHeader("GET");
-    const fetched = await fetch(LISTS_URL + `groups/${user_id}`, fetchContent);
+    const fetched = await fetch(LISTS_URL + `/groups/${user_id}`, fetchContent);
     const fetchedJSON = fetched.json();
     setAllGroupsList(fetchedJSON);
   }

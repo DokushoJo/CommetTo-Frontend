@@ -13,6 +13,9 @@ export default function RightSide() {
       <div className="flex-col w-full h-screen overflow-auto border-l border-black">
         <ListEvents {...{ inputText }} />
       </div>
+      <div className="floating-button-div">
+        <button className="fb">+</button>
+      </div>
     </>
   );
 }

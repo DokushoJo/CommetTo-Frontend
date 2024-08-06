@@ -1,0 +1,18 @@
+.floating-button-div {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.fb {
+  background-color: rgb(156, 163, 175);
+  width: 60px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-weight: 900;
+  padding: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px 1px rgb(136, 136, 136);
+}
