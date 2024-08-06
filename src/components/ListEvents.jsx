@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import "./ListEvents.css";
 import { setHeader, sessionData, formatDate } from "../util/util";
+import { Delete } from "./Delete";
+const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+import axios from "axios";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
 
@@ -42,6 +45,36 @@ export default function ListEvents(prop) {
     return filtered;
   }
 
+  const [deleteEvent, setDeleteEvent] = useState(null);
+  const [deleteId, setDeleteId] = useState(null);
+
+  useEffect(() => {
+    handleDelete();
+  }, []);
+
+  const handleClick = (id) => {
+    setDeleteEvent(id);
+    console.log(deleteEvent);
+  };
+
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    console.log(deleteEvent);
+    try {
+      await fetch(VITE_APP_BASE_URL + "event", deleteEvent, {
+        headers: {
+          Authorization: sessionData().token,
+          "Content-Type": "application/json",
+        },
+        method: "PUT",
+      });
+
+      //   await axios.delete(VITE_APP_BASE_URL + "event", deleteEvent);
+    } catch (error) {
+      return "Invalid Input";
+    }
+  };
+
   return (
     <>
       <div>
@@ -51,14 +84,25 @@ export default function ListEvents(prop) {
                 return (
                   <div className="groupTile" key={event.id} id={event.id}>
                     <div className="float-right">
-                      <span>x</span>
+                      <form onSubmit={(e) => handleDelete(e)}>
+                        <button
+                          type="submit"
+                          className=""
+                          onClick={() => handleClick(event.id)}
+                        >
+                          x
+                        </button>
+                      </form>
                     </div>
                     <br />
-                    Group name: {event.name} <br />
-                    Members: {formatDate(event.date)} <br />
-                    Description: {event.description}
+                    <div className="flex flex-column">
+                      Group name: {event.name} <br />
+                      Members: {formatDate(event.date)} <br />
+                      Description: Put a description here
+                      <br />
+                    </div>
                     <br />
-                    <div>
+                    <div className="inset-x-0 bottom-0">
                       <span>comment</span>
                       <span>dislike</span>
                     </div>
