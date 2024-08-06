@@ -54,6 +54,7 @@ export default function ListEvents(prop) {
 
   return (
     <>
+    <h1>this is the listEvents component</h1>
       <div>
         {filterd !== null
           ? filterd.map((event) => {
