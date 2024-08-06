@@ -16,6 +16,7 @@ function App() {
   const [dialogContent, setDialogContent] = useState(null); //add button click
   const [register, setRegister] = useState("login"); //switch form log in to register if no user account
   const [selectedEventId, setSelectedEventId] = useState(null);
+  const [selectedEvent, setSelectedEvent] = useState(null);
 
   //Jsx handle functions
 
@@ -33,6 +34,10 @@ function App() {
   // LIST
   function sendEventIdToRightSide(EventId) {
     setSelectedEventId(EventId);
+  }
+
+  function sendEventToRightSide(obj) {
+    setSelectedEvent(obj);
   }
 
   return (
@@ -78,7 +83,10 @@ function App() {
               </div>
             </div>
           </div>
-          <RightSide selectedEventId={selectedEventId} />
+          <RightSide
+            selectedEventId={selectedEventId}
+            selectedEvent={selectedEvent}
+          />
         </div>
       </div>
     </>

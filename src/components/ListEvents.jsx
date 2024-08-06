@@ -11,6 +11,7 @@ function Decodeuint8arr(uint8array) {
 
 export default function ListEvents(prop) {
   const sendEventIdToRightSide = prop.sendEventIdToRightSide;
+  const sendEventToRightSide = prop.sendEventToRightSide;
 
   const [allEventsList, setAllEventsList] = useState(null);
   const filterd = filterEvents();
@@ -47,6 +48,8 @@ export default function ListEvents(prop) {
 
   function handleSendEventIdToRightSide(event) {
     sendEventIdToRightSide(event.target.id);
+    sendEventToRightSide(event.target);
+    console.log(event.target);
   }
 
   return (
@@ -56,13 +59,13 @@ export default function ListEvents(prop) {
           ? filterd.map((event) => {
               return (
                 <div
-                  className="eventTile"
+                  className="groupTile"
                   key={event.id}
                   id={event.id}
                   onClick={handleSendEventIdToRightSide}
                 >
-                  name: {event.name} <br />
-                  date: {formatDate(event.date)} <br />
+                  Group name: {event.name} <br />
+                  Members: {formatDate(event.date)} <br />
                   <br />
                 </div>
               );

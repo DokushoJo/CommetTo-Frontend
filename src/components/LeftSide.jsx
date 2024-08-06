@@ -34,11 +34,12 @@ export default function LeftSide(prop) {
               src="./../../images/event_icon.png"
               className="ml-3 mt-2 h-8"
             />
-            <h3 className="pl-3 mt-2 text-3xl">Events</h3>
+            <h3 className="pl-3 mt-2 text-3xl">Groups</h3>
           </div>
           <div className=" event-box--height-text-size overflow-auto m-2 p-5 rounded-lg tile-inner-bg">
             <ListEvents
               sendEventIdToRightSide={prop.sendEventIdToRightSide}
+              sendEventToRightSide={prop.sendEventToRightSide}
               {...{ inputText }}
             />
           </div>
