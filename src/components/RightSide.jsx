@@ -1,28 +1,18 @@
-import { useEffect, useState } from 'react'
-import "./RightSide.css"
-import InitialView from './InitialView'
-import FocusView from './FocusView'
+import { useEffect, useState } from "react";
+import "./RightSide.css";
+import ListEvents from "./ListEvents";
 
-export default function RightSide(prop) {
-    const selectedEventId = prop.selectedEventId;
+export default function RightSide() {
+  // useStates
+  const [inputText, setInputText] = useState("");
 
-    // useStates
-    const [currentView, setCurrentView] = useState(<InitialView/>)
+  return (
+    <>
+      {/* Add Event Button Dialog box */}
 
-    // useEffects
-    useEffect(() => {
-        if (selectedEventId !== null) {
-            setCurrentView(<FocusView selectedEventId={selectedEventId}/>)
-        }
-    }, [selectedEventId])
-
-    return (
-        <>
-        	{/* Add Event Button Dialog box */}
-          
-            <div className="flex-col w-full h-screen overflow-auto border-l border-black">
-                {currentView}
-            </div>
-        </>
-    )
+      <div className="flex-col w-full h-screen overflow-auto border-l border-black">
+        <ListEvents {...{ inputText }} />
+      </div>
+    </>
+  );
 }
