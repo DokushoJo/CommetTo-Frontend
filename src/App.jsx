@@ -38,6 +38,7 @@ function App() {
 
   function sendEventToRightSide(obj) {
     setSelectedEvent(obj);
+    console.log(obj);
   }
 
   return (
@@ -49,7 +50,10 @@ function App() {
       <div>
         <div className="flex">
           <div className="h-screen">
-            <LeftSide sendEventIdToRightSide={sendEventIdToRightSide} />
+            <LeftSide
+              sendEventIdToRightSide={sendEventIdToRightSide}
+              sendEventToRightSide={sendEventToRightSide}
+            />
             <div
               className="ml-72 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
 								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 

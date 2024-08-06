@@ -8,7 +8,7 @@ function Decodeuint8arr(uint8array) {
   return new TextDecoder("utf-8").decode(uint8array);
 }
 
-export default function ListEvents(prop) {
+export default function ListGroups(prop) {
   const [allEventsList, setAllEventsList] = useState(null);
   const filterd = filterEvents();
 
@@ -44,29 +44,18 @@ export default function ListEvents(prop) {
 
   return (
     <>
-      <div>
-        <div className="grid grid-cols-[500px_500px_500px] grid-rows-[300px_300px_300px] event-container justify-center gap-20 mt-10">
-          {filterd !== null
-            ? filterd.map((event) => {
-                return (
-                  <div className="groupTile" key={event.id} id={event.id}>
-                    <div className="float-right">
-                      <span>x</span>
-                    </div>
-                    <br />
-                    Group name: {event.name} <br />
-                    Members: {formatDate(event.date)} <br />
-                    Description: {event.description}
-                    <br />
-                    <div>
-                      <span>comment</span>
-                      <span>dislike</span>
-                    </div>
-                  </div>
-                );
-              })
-            : null}
-        </div>
+      <div className="">
+        {filterd !== null
+          ? filterd.map((event) => {
+              return (
+                <div className="groupTile" key={event.id} id={event.id}>
+                  Group name: {event.name} <br />
+                  Members: {formatDate(event.date)} <br />
+                  <br />
+                </div>
+              );
+            })
+          : null}
       </div>
     </>
   );
