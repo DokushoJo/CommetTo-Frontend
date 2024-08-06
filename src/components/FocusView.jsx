@@ -1,14 +1,9 @@
-import { useEffect, useState, useRef } from "react";
-const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+import { useState, useRef } from "react";
 import "./FocusView.css";
-import { formatDate, formatTime, setHeader } from "../util/util";
-import { sessionData } from "../util/util";
+import { formatDate, formatTime } from "../util/util";
 
 import { Edit } from "./Edit.jsx";
 import { Delete } from "../components/Delete.jsx";
-
-import { EditEvent } from "./EditEvent.jsx";
-import axios from "axios";
 
 export default function FocusView(prop) {
   const selectedEventId = prop.selectedEventId;
@@ -17,17 +12,6 @@ export default function FocusView(prop) {
   // useStates
   const [currentDisplayEvent, setCurrentDisplayEvent] = useState(null);
   const [dialogContent, setDialogContent] = useState(null); //add button click
-  const [allEventsList, setAllEventsList] = useState(null);
-  const filterd = filterEvents();
-
-  // useEffects
-  //   useEffect(() => {
-  //     if (selectedEventId !== null) {
-  //       changeEventView(selectedEventId);
-  //     }
-  //   }, [selectedEventId]);
-
-  // Helper functions
 
   // ADD BUTTON CLICK
   const dialogRef = useRef(null);
@@ -40,72 +24,9 @@ export default function FocusView(prop) {
       : dialogRef.current.showModal();
   };
 
-  //   async function changeEventView(EventId) {
-  //     const fetchContent = setHeader("GET");
-  //     const fetchedEvent = await fetch(
-  //       VITE_APP_BASE_URL + "/event/" + EventId,
-  //       fetchContent
-  //     );
-  //     const eventJSONParsed = await fetchedEvent.json();
-  //     console.log(eventJSONParsed);
-  //     setCurrentDisplayEvent(eventJSONParsed);
-  //   }
-
-  //   const filterd = filterEvents();
-  //   function filterEvents() {
-  //     if (prop.inputText === "") {
-  //       return selectEvent;
-  //     }
-  //     const filtered = selectEvent.filter((e) => {
-  //       return (
-  //         e.name.toLowerCase().includes(prop.inputText) ||
-  //         e.date.toLowerCase().includes(prop.inputText)
-  //       );
-  //     });
-  //     return filtered;
-  //   }
-
-  function Decodeuint8arr(uint8array) {
-    return new TextDecoder("utf-8").decode(uint8array);
-  }
-
-  useEffect(() => {
-    fetchListEvents();
-  }, []);
-
-  async function fetchListEvents() {
-    const user_id = sessionData("id").id;
-    const fetchContent = setHeader("GET");
-    const fetched = await fetch(
-      VITE_APP_BASE_URL + `/${user_id}`,
-      fetchContent
-    );
-    const createdIdInUint8Arr = [];
-    for await (let chunk of fetched.body) {
-      createdIdInUint8Arr.push(chunk);
-    }
-    const converted = Decodeuint8arr(createdIdInUint8Arr[0]);
-    const eventsJSONList = JSON.parse(converted);
-    setAllEventsList(eventsJSONList);
-    console.log(converted);
-  }
-
-  function filterEvents() {
-    if (prop.inputText === "") {
-      return allEventsList;
-    }
-    const filtered = allEventsList.filter((e) => {
-      return (
-        e.name.toLowerCase().includes(prop.inputText) ||
-        e.date.toLowerCase().includes(prop.inputText)
-      );
-    });
-    return filtered;
-  }
-
   return (
     <>
-      {filterd.map((event) => {
+      {selectEvent.map((event) => {
         return (
           <div className="groupTile" key={event.id} id={event.id}>
             Group name: {event.name} <br />

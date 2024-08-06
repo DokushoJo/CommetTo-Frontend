@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import ListEvents from "./ListEvents";
 import SearchBox from "./SearchBox";
 import "./LeftSide.css";
@@ -6,8 +6,9 @@ import AddNewEvent from "./AddNewEvent";
 import logo from "../image/commeto.png";
 import logoTwo from "../image/side.png";
 
-export default function LeftSide(prop) {
-  const [count, setCount] = useState(0);
+import ListGroups from "./ListGroups";
+
+export default function LeftSide() {
   const [inputText, setInputText] = useState("");
 
   return (
@@ -43,6 +44,7 @@ export default function LeftSide(prop) {
             <h3 className="pl-3 mt-2 text-3xl">Groups</h3>
           </div>
           <div className=" event-box--height-text-size overflow-auto m-2 p-5 rounded-lg tile-inner-bg">
+            <ListGroups {...{ inputText }} />
           </div>
         </div>
       </div>
