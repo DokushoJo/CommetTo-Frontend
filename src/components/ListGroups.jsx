@@ -15,7 +15,7 @@ export default function ListGroups(prop) {
 
   useEffect(() => {
     fetchListGroups();
-  }, [allGroupsList]);
+  }, []);
 
   useEffect(() => {
     fetchListMembers();
@@ -52,7 +52,7 @@ export default function ListGroups(prop) {
                 </div>
               );
             })
-          : null}
+          : <h1>You're not in any groups. Why not make one?</h1>}
       </div>
     </>
   );
