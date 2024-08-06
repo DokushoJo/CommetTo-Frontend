@@ -56,7 +56,7 @@ export default function ListGroups() {
                 </div>
               );
             })
-          : null}
+          : <h1>You're not in any groups. Why not make one?</h1>}
       </div>
     </>
   );
