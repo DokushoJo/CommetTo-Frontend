@@ -13,7 +13,7 @@ export default function LeftSide() {
 
   return (
     <>
-    <h1>This is left side component</h1>
+      <h1>This is left side component</h1>
       <div className="h-screen flex-col overflow-auto leftside--width text-black">
         <div className="font-bold text-5xl text-center m-16 text-shadow">
           <img className="ml-8 -mb-36 -mt-36 size-10/12" src={logoTwo} />
@@ -28,11 +28,6 @@ export default function LeftSide() {
           </div>
           <div className="m-auto mt-1">
             <SearchBox {...{ inputText, setInputText }}></SearchBox>
-            <ListEvents
-              sendEventIdToRightSide={prop.sendEventIdToRightSide}
-              sendEventToRightSide={prop.sendEventToRightSide}
-              {...{ inputText }}
-            />
           </div>
         </div>
         <div className="m-5 mb-24 pb-0.5 rounded-lg tile-bg tile-shadow">
