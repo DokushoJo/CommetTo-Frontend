@@ -135,7 +135,7 @@ export function Login() {
 										transition-all hover:shadow-lg hover:shadow-black-500/40 
 										focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none 
 										disabled:pointer-events-none disabled:opacity-50 
-										disabled:shadow-none flex w-full justify-center  leading-6 hover:bg-amber-500
+										disabled:shadow-none flex w-full justify-center  leading-6 hover:bg-pink
 										focus-visible:outline focus-visible:outline-2 
 										focus-visible:outline-offset-2 focus-visible:outline-amber-500"
                   >
