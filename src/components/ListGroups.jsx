@@ -89,7 +89,9 @@ export default function ListGroups() {
                 Members:
                 {event.users.map((user) => {
                   if (user.accepted && !user.rejected) {
-                    return formatList(user.username);
+                    const arr = [];
+                    arr.push(user.username);
+                    return formatList(arr);
                   }
                 })}
                 <br />
