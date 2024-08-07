@@ -70,7 +70,7 @@ function App() {
                   }}
                 >
                   {" "}
-                  ADD EVENT{" "}
+                  ADD GROUP{" "}
                 </button>
 
                 <dialog
