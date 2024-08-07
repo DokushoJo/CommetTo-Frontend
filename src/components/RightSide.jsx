@@ -36,6 +36,17 @@ export default function RightSide() {
           +
         </button>
       </div>
+      <dialog
+        className="rounded-lg"
+        ref={dialogRef}
+        onClick={(e) => {
+          if (e.currentTarget === e.target) {
+            toggleAdd();
+          }
+        }}
+      >
+        {dialogContent}
+      </dialog>
     </>
   );
 }
