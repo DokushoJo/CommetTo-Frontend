@@ -2,39 +2,66 @@ import { useEffect, useState } from "react";
 import "./ListEvents.css";
 import { setHeader, sessionData, formatDate } from "../util/util";
 
-const LISTS_URL = import.meta.env.VITE_APP_BASE_URL;
+const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function Decodeuint8arr(uint8array) {
   return new TextDecoder("utf-8").decode(uint8array);
 }
 
 export default function ListGroups() {
-  const [allGroupsList, setAllGroupsList] = useState(null);
+  const [listOfGroupsForUser, setListOfGroupsForUser] = useState([]);
   const [memberInGroup, setMemberInGroup] = useState(null);
 
   useEffect(() => {
-    fetchListGroups();
+    fetchListOfGroups();
   }, []);
 
   useEffect(() => {
-    fetchListMembers();
-  }, [allGroupsList]);
+    fetchListOfMembersInGroup();
+  }, [listOfGroupsForUser]);
 
-  async function fetchListGroups() {
+  async function fetchListOfGroups() {
     const user_id = sessionData("id").id;
-    const fetchContent = setHeader("GET");
-    const fetched = await fetch(`${LISTS_URL}/groups/${user_id}`, fetchContent);
-    const fetchedJSON = fetched.json();
-    setAllGroupsList(fetchedJSON);
+    const fetchGroups = await fetch(BACKEND_URL + `/groups/${user_id}`, {
+      headers: {
+        Authorization: sessionData().token,
+        "Content-Type": "application/json",
+      },
+      method: "GET",
+    });
+    const fetchedJSON = await fetchGroups.json();
+    if (fetchedJSON.length > 0) {
+      const groupIdIndexes = await fetchedJSON.map((obj) => obj.group_id);
+      setListOfGroupsForUser(groupIdIndexes);
+    }
   }
 
-  async function fetchListMembers() {
-    const fetchContent = setHeader("GET");
-    const groups = await allGroupsList.map((group) =>
-      fetch(LISTS_URL + `/users/${group}`, fetchContent)
+  function getListOfUserIds(usersArray) {
+    const userIds = usersArray.map((group) => {
+      if (group.accepted) {
+        return group.user_id;
+      }
+    });
+    return userIds;
+  }
+
+  async function fetchListOfMembersInGroup() {
+    console.log(`Allgroups array is ${listOfGroupsForUser}`);
+    const groups = await Promise.all(
+      listOfGroupsForUser.map((group) => {
+        return fetch(BACKEND_URL + `/users/groups/${group}`, {
+          headers: {
+            Authorization: sessionData().token,
+            "Content-Type": "application/json",
+          },
+          method: "GET",
+        }).then((groupInfo) => groupInfo.json());
+      })
     );
-    const groupsJSON = groups.json();
-    setMemberInGroup(groupsJSON);
+    console.log(groups);
+    // const groupsJSON = Promise.all(groups.map(async (group) => group.json()));
+    // console.log(groupsJSON)
+    setMemberInGroup(groups);
   }
 
   return (
@@ -43,14 +70,14 @@ export default function ListGroups() {
         {memberInGroup !== null ? (
           memberInGroup.map((event) => {
             return (
-              <div className="groupTile" key={event.id} id={event.id}>
+              <div className="groupTile" key={event.groupId} id={event.groupId}>
                 Group name: {event.groupName} <br />
-                Members:{" "}
+                Members:
                 {event.users.map((user) => {
                   if (user.accepted && !user.rejected) {
-                    return user.id;
+                    return `${user.username} `;
                   }
-                })}{" "}
+                })}
                 <br />
                 <br />
               </div>
