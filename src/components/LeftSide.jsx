@@ -28,11 +28,6 @@ export default function LeftSide() {
           </div>
           <div className="m-auto mt-1">
             <SearchBox {...{ inputText, setInputText }}></SearchBox>
-            <ListEvents
-              sendEventIdToRightSide={prop.sendEventIdToRightSide}
-              sendEventToRightSide={prop.sendEventToRightSide}
-              {...{ inputText }}
-            />
           </div>
         </div>
         <div className="m-5 mb-24 pb-0.5 rounded-lg tile-bg tile-shadow">
