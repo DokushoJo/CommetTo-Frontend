@@ -64,6 +64,16 @@ export default function ListGroups() {
     setMemberInGroup(groups);
   }
 
+  function formatList(array) {
+    if (array.length === 0) {
+      return "";
+    } else if (array.length === 1) {
+      return array[0];
+    } else {
+      return array.slice(0, -1).join(", ") + " and " + array[array.length - 1];
+    }
+  }
+
   return (
     <>
       <div className="">
@@ -79,7 +89,7 @@ export default function ListGroups() {
                 Members:
                 {event.users.map((user) => {
                   if (user.accepted && !user.rejected) {
-                    return `${user.username} `;
+                    return formatList(user.username);
                   }
                 })}
                 <br />
