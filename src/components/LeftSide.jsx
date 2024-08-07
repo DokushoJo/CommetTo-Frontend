@@ -44,7 +44,7 @@ export default function LeftSide() {
             <h3 className="pl-3 mt-2 text-3xl">Groups</h3>
           </div>
           <div className=" event-box--height-text-size overflow-auto m-2 p-5 rounded-lg tile-inner-bg">
-            <ListGroups {...{ inputText }} />
+            <ListGroups />
           </div>
         </div>
       </div>

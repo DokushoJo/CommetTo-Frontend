@@ -4,14 +4,11 @@ import { setHeader, sessionData, formatDate } from "../util/util";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL;
 
-function Decodeuint8arr(uint8array) {
-  return new TextDecoder("utf-8").decode(uint8array);
-}
 
-export default function ListGroups(prop) {
+
+export default function ListGroups() {
   const [allGroupsList, setAllGroupsList] = useState(null);
   const [memberInGroup, setMemberInGroup] = useState(null);
-  const filterd = filterEvents();
 
   useEffect(() => {
     fetchListGroups();
