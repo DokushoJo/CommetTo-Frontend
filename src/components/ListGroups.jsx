@@ -23,7 +23,7 @@ export default function ListGroups() {
   async function fetchListGroups() {
     const user_id = sessionData("id").id;
     const fetchContent = setHeader("GET");
-    const fetched = await fetch(LISTS_URL + `/groups/${user_id}`, fetchContent);
+    const fetched = await fetch(`${LISTS_URL}/groups/${user_id}`, fetchContent);
     const fetchedJSON = fetched.json();
     setAllGroupsList(fetchedJSON);
   }

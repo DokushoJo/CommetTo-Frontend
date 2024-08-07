@@ -82,35 +82,21 @@ export default function AddNewEvent() {
             </div>
 
             <div className="mb-5">
-              <h1 className="float-left mb-2">Timeframe (start-end)</h1>
-              <br />
-              <div className="flex flex-row gap-x-2.5 float-left">
-                <label
-                  htmlFor="event-name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
-                ></label>
-                <input
-                  type="date"
-                  value={addData.date}
-                  onChange={(e) => handleEventsData("date", e)}
-                  required
-                  placeholder="Event Date"
-                  id="small-input"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-                  focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />{" "}
-                -
-                <input
-                  type="date"
-                  value={addData.date}
-                  onChange={(e) => handleEventsData("date", e)}
-                  required
-                  placeholder="Event Date"
-                  id="small-input"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
-				focus:ring-blue-500 focus:border-blue-500 block w-2/5 p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                />
-              </div>
+              <h1 className="float-left mb-2">Date</h1>
+              <label
+                htmlFor="event-name"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
+              ></label>
+              <input
+                type="date"
+                value={addData.date}
+                onChange={(e) => handleEventsData("date", e)}
+                required
+                placeholder="Event Date"
+                id="small-input"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg
+                  focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-transparent-700 dark:border-gray-400 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
             </div>
             <div className="mb-5">
               <h1 className="float-left mb-2">Description</h1>
