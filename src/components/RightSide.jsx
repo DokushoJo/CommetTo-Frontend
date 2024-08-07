@@ -1,10 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./RightSide.css";
 import ListEvents from "./ListEvents";
+import AddNewEvent from "./AddNewEvent";
 
 export default function RightSide() {
   // useStates
   const [inputText, setInputText] = useState("");
+  const [dialogContent, setDialogContent] = useState(null);
+
+  const dialogRef = useRef(null);
+  const toggleAdd = () => {
+    if (!dialogRef.current) {
+      return;
+    }
+    dialogRef.current.hasAttribute("open")
+      ? dialogRef.current.close()
+      : dialogRef.current.showModal();
+  };
 
   return (
     <>
@@ -14,7 +26,15 @@ export default function RightSide() {
         <ListEvents {...{ inputText }} />
       </div>
       <div className="floating-button-div">
-        <button className="fb">+</button>
+        <button
+          className="fb"
+          onClick={() => {
+            setDialogContent(<AddNewEvent />);
+            toggleAdd();
+          }}
+        >
+          +
+        </button>
       </div>
     </>
   );

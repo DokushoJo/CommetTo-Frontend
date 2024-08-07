@@ -8,6 +8,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { sessionData } from "./util/util";
 import AddNewEvent from "./components/AddNewEvent";
+import AddNewGroup from "./components/AddGroup";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -62,7 +63,7 @@ function App() {
                 <button
                   className="ml-1 p-1 mt-1 text-sm"
                   onClick={() => {
-                    setDialogContent(<AddNewEvent />);
+                    setDialogContent(<AddNewGroup />);
                     toggleAdd();
                   }}
                 >
