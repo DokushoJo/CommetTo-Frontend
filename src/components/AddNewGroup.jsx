@@ -50,14 +50,14 @@ export default function AddNewGroup() {
   return (
     <>
       <div>
-        <div className="w-128 container-add flex-row justify-self-center h-128 rounded-lg dark:bg-gray-100 p-10 shadow-2xl">
-          <h1 className="text-center mt-3 mb-8 font-extrabold text-[#ecb731] text-3xl">
+        <div className="w-128 container-add flex-row justify-self-center h-128 rounded-lg dark:bg-purple p-10 shadow-2xl">
+          <h1 className="text-center mt-3 mb-8 font-extrabold text-yellow text-3xl">
             Create Group
           </h1>
 
           <form onSubmit={handleSumbitData}>
             <div className="mb-5">
-              <h1 className="float-left mb-2">Group Name</h1>
+              <h1 className="float-left mb-2 text-teal">Group Name</h1>
               <label
                 htmlFor="event-name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
@@ -75,7 +75,7 @@ export default function AddNewGroup() {
             </div>
 
             <div className="mb-5">
-              <h1 className="float-left mb-2">Members</h1>
+              <h1 className="float-left mb-2 text-teal">Members</h1>
               <label
                 htmlFor="event-name"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
@@ -90,7 +90,7 @@ export default function AddNewGroup() {
             </div>
 
             <div className="mb-5">
-              <h1 className="float-left mb-2">Description</h1>
+              <h1 className="float-left mb-2 text-teal">Description</h1>
               <label
                 htmlFor="description"
                 className="block mb-2 text-sm font-medium text-gray-900 dark:text-black"
@@ -113,7 +113,7 @@ export default function AddNewGroup() {
                 type="submit"
                 data-twe-ripple-init
                 data-twe-ripple-color="light"
-                className="mt-3 ml-8 select-none rounded-lg bg-gray-400 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
+                className="select-none rounded-lg bg-yellow py-3 px-6 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
 								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-amber-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
 								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   				w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"

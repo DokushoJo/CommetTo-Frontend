@@ -16,9 +16,11 @@ export default function LeftSide() {
           <div className="flex">
             <img
               src="./../../images/search_icon.png"
-              className="h-7 ml-5 pl-2"
+              className="h-7 ml-5 mt-1 pl-2"
             />
-            <h3 className="pl-2.5 text-3xl">Search</h3>
+            <h3 className="pl-2.5 text-3xl text-yellow text-center font-bold leading-9 tracking-tight">
+              Search
+            </h3>
           </div>
           <div className="m-auto mt-1">
             <SearchBox {...{ inputText, setInputText }}></SearchBox>
@@ -26,11 +28,10 @@ export default function LeftSide() {
         </div>
         <div className="m-5 mb-24 pb-0.5 rounded-lg bg-purple tile-shadow border-solid border-8 border-pink">
           <div className="m-2 p-3 flex">
-            <img
-              src="./../../images/event_icon.png"
-              className="ml-3 mt-2 h-8"
-            />
-            <h3 className="pl-3 mt-2 text-3xl">Groups</h3>
+            <img src="./../../images/event_icon.png" className="ml-3 h-8" />
+            <h3 className="pl-2.5 text-3xl text-yellow text-center font-bold leading-9 tracking-tight">
+              Groups
+            </h3>
           </div>
           <div className=" event-box--height-text-size overflow-auto m-2 p-5 rounded-lg bg-teal">
             <ListGroups />

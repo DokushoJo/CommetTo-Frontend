@@ -2,17 +2,9 @@ import { useRef, useState } from "react";
 import "./App.css";
 import LeftSide from "./components/LeftSide";
 import RightSide from "./components/RightSide";
-import { Save } from "./components/Save";
-import { EditEvent } from "./components/EditEvent";
-import { Login } from "./components/Login";
-import { Register } from "./components/Register";
-import { sessionData } from "./util/util";
-import AddNewEvent from "./components/AddNewEvent";
 import AddNewGroup from "./components/AddNewGroup";
 import { useAuth } from "./hooks/useAuth"; //import for logout function
 import logo from "./image/logo_small.png";
-
-const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 function App() {
   //variable for logout
@@ -20,7 +12,6 @@ function App() {
 
   //UseState
   const [dialogContent, setDialogContent] = useState(null); //add button click
-  const [register, setRegister] = useState("login"); //switch form log in to register if no user account
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -40,11 +31,6 @@ function App() {
   // LIST
   function sendEventIdToRightSide(EventId) {
     setSelectedEventId(EventId);
-  }
-
-  function sendEventToRightSide(obj) {
-    setSelectedEvent(obj);
-    console.log(obj);
   }
 
   return (
@@ -70,15 +56,15 @@ function App() {
             </div>
             <LeftSide sendEventIdToRightSide={sendEventIdToRightSide} />
             <div
-              className="ml-72 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-yellow py-2 px-4 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
+              className="ml-80 mb-10 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-yellow py-2 px-4 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
               shadow-pink transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
               active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
-              w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700"
+              w-32 flex-none  hover:bg-pink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700"
             >
               {/* Add Event Button Dialog box */}
               <div>
                 <button
-                  className="p-1 mt-1 text-sm shadow-pink"
+                  className="p-1 mt-1 text-sm shadow-pink "
                   onClick={() => {
                     setDialogContent(<AddNewGroup />);
                     toggleAdd();

@@ -15,6 +15,9 @@ export default {
         pink: "#F15BB5",
         teal: "#00F5D4",
       },
+      spacing: {
+        96: "25rem",
+      },
     },
     plugins: [],
   },
