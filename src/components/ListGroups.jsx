@@ -4,14 +4,11 @@ import { setHeader, sessionData, formatDate } from "../util/util";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL;
 
-function Decodeuint8arr(uint8array) {
-  return new TextDecoder("utf-8").decode(uint8array);
-}
 
-export default function ListGroups(prop) {
+
+export default function ListGroups() {
   const [allGroupsList, setAllGroupsList] = useState(null);
-  const [memberInGroup, setMemberInGroup] = useState(null)
-  const filterd = filterEvents();
+  const [memberInGroup, setMemberInGroup] = useState(null);
 
   useEffect(() => {
     fetchListGroups();
@@ -19,23 +16,24 @@ export default function ListGroups(prop) {
 
   useEffect(() => {
     fetchListMembers();
-  }, [memberInGroup])
+  }, [memberInGroup]);
 
   async function fetchListGroups() {
     const user_id = sessionData("id").id;
     const fetchContent = setHeader("GET");
     const fetched = await fetch(LISTS_URL + `groups/${user_id}`, fetchContent);
-    const fetchedJSON = fetched.json()
+    const fetchedJSON = fetched.json();
     setAllGroupsList(fetchedJSON);
   }
 
   async function fetchListMembers() {
-    const fetchContent = setHeader("GET")
-    const groups = await allGroupsList.map(group => fetch(LISTS_URL + `/users/${group}`, fetchContent));
-    const groupsJSON = groups.json()
-    setMemberInGroup(groupsJSON)
+    const fetchContent = setHeader("GET");
+    const groups = await allGroupsList.map((group) =>
+      fetch(LISTS_URL + `/users/${group}`, fetchContent)
+    );
+    const groupsJSON = groups.json();
+    setMemberInGroup(groupsJSON);
   }
-
 
   return (
     <>
@@ -45,9 +43,13 @@ export default function ListGroups(prop) {
               return (
                 <div className="groupTile" key={event.id} id={event.id}>
                   Group name: {event.groupName} <br />
-                  Members: {event.users.map(user => { if (user.accepted && !user.rejected) {
-                    return user.id}
-                  })} <br />
+                  Members:{" "}
+                  {event.users.map((user) => {
+                    if (user.accepted && !user.rejected) {
+                      return user.id;
+                    }
+                  })}{" "}
+                  <br />
                   <br />
                 </div>
               );
