@@ -4,7 +4,9 @@ import { setHeader, sessionData, formatDate } from "../util/util";
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL;
 
-
+function Decodeuint8arr(uint8array) {
+  return new TextDecoder("utf-8").decode(uint8array);
+}
 
 export default function ListGroups() {
   const [allGroupsList, setAllGroupsList] = useState(null);
@@ -16,12 +18,12 @@ export default function ListGroups() {
 
   useEffect(() => {
     fetchListMembers();
-  }, [memberInGroup]);
+  }, [allGroupsList]);
 
   async function fetchListGroups() {
     const user_id = sessionData("id").id;
     const fetchContent = setHeader("GET");
-    const fetched = await fetch(LISTS_URL + `groups/${user_id}`, fetchContent);
+    const fetched = await fetch(LISTS_URL + `/groups/${user_id}`, fetchContent);
     const fetchedJSON = fetched.json();
     setAllGroupsList(fetchedJSON);
   }
@@ -38,23 +40,25 @@ export default function ListGroups() {
   return (
     <>
       <div className="">
-        {memberInGroup !== null
-          ? memberInGroup.map((event) => {
-              return (
-                <div className="groupTile" key={event.id} id={event.id}>
-                  Group name: {event.groupName} <br />
-                  Members:{" "}
-                  {event.users.map((user) => {
-                    if (user.accepted && !user.rejected) {
-                      return user.id;
-                    }
-                  })}{" "}
-                  <br />
-                  <br />
-                </div>
-              );
-            })
-          : <h1>You're not in any groups. Why not make one?</h1>}
+        {memberInGroup !== null ? (
+          memberInGroup.map((event) => {
+            return (
+              <div className="groupTile" key={event.id} id={event.id}>
+                Group name: {event.groupName} <br />
+                Members:{" "}
+                {event.users.map((user) => {
+                  if (user.accepted && !user.rejected) {
+                    return user.id;
+                  }
+                })}{" "}
+                <br />
+                <br />
+              </div>
+            );
+          })
+        ) : (
+          <h1>You're not in any groups. Why not make one?</h1>
+        )}
       </div>
     </>
   );

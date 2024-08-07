@@ -8,6 +8,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { sessionData } from "./util/util";
 import AddNewEvent from "./components/AddNewEvent";
+import AddNewGroup from "./components/AddNewGroup";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -50,10 +51,7 @@ function App() {
       <div>
         <div className="flex">
           <div className="h-screen">
-            <LeftSide
-              sendEventIdToRightSide={sendEventIdToRightSide}
-              sendEventToRightSide={sendEventToRightSide}
-            />
+            <LeftSide sendEventIdToRightSide={sendEventIdToRightSide} />
             <div
               className="ml-72 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
 								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
@@ -65,7 +63,7 @@ function App() {
                 <button
                   className="ml-1 p-1 mt-1 text-sm"
                   onClick={() => {
-                    setDialogContent(<AddNewEvent />);
+                    setDialogContent(<AddNewGroup />);
                     toggleAdd();
                   }}
                 >
