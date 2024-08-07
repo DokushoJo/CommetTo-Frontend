@@ -101,11 +101,15 @@ export default function ListEvents(prop) {
   return (
     <>
       <div>
-        <div className="grid grid-cols-[500px_500px_500px] grid-rows-[300px_300px_300px] event-container justify-center gap-20 mt-10">
+        <div className="grid grid-cols-[550px_550px_550px] grid-rows-[300px_300px_300px] event-container justify-center gap-12 mt-10">
           {filterd !== null
             ? filterd.map((event) => {
                 return (
-                  <div className="groupTile" key={event.id} id={event.id}>
+                  <div
+                    className="bg-pink border-solid border-8 border-purple groupTile"
+                    key={event.id}
+                    id={event.id}
+                  >
                     <div className="float-right">
                       <button
                         type="submit"
@@ -115,6 +119,7 @@ export default function ListEvents(prop) {
                         x
                       </button>
                     </div>
+                    <br />
                     <br />
                     <div className="">
                       Group name: {event.name} <br />

@@ -9,6 +9,12 @@ export default {
       height: {
         128: "36rem",
       },
+      colors: {
+        purple: "#9B5DE5",
+        yellow: "#FEE440",
+        pink: "#F15BB5",
+        teal: "#00F5D4",
+      },
     },
     plugins: [],
   },

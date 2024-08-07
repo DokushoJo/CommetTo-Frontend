@@ -27,7 +27,7 @@ export default function RightSide() {
       </div>
       <div className="floating-button-div">
         <button
-          className="fb"
+          className="bg-yellow fb"
           onClick={() => {
             setDialogContent(<AddNewEvent />);
             toggleAdd();

@@ -10,6 +10,7 @@ import { sessionData } from "./util/util";
 import AddNewEvent from "./components/AddNewEvent";
 import AddNewGroup from "./components/AddNewGroup";
 import { useAuth } from "./hooks/useAuth"; //import for logout function
+import logo from "./image/logo_small.png";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
@@ -55,33 +56,35 @@ function App() {
       <div>
         <div className="flex">
           <div className="h-screen">
-            <button
-              className="m-3 rounded-md select-none bg-gray-400 py-2 px-2 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
-              shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
+            <div className="flex flex-column space-x-60">
+              <button
+                className="m-3 rounded-md select-none bg-yellow py-2 px-2 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
+              shadow-pink transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
               active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
               w-28 flex-none hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700 logout-button"
-              onClick={logout}
-            >
-              Logout
-            </button>
+                onClick={logout}
+              >
+                Logout
+              </button>
+              <img src={logo}></img>
+            </div>
             <LeftSide sendEventIdToRightSide={sendEventIdToRightSide} />
             <div
-              className="ml-72 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-gray-400 py-2 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-white shadow-md
-              shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
+              className="ml-72 absolute flex settings--width-height bottom-5 rounded-md   select-none  bg-yellow py-2 px-4 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
+              shadow-pink transition-all hover:shadow-lg hover:shadow-yellow-700/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
               active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
               w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-700"
             >
               {/* Add Event Button Dialog box */}
               <div>
                 <button
-                  className="ml-1 p-1 mt-1 text-sm"
+                  className="p-1 mt-1 text-sm shadow-pink"
                   onClick={() => {
                     setDialogContent(<AddNewGroup />);
                     toggleAdd();
                   }}
                 >
-                  {" "}
-                  ADD GROUP{" "}
+                  ADD GROUP
                 </button>
 
                 <dialog
