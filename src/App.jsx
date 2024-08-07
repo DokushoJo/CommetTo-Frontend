@@ -8,7 +8,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { sessionData } from "./util/util";
 import AddNewEvent from "./components/AddNewEvent";
-import AddNewGroup from "./components/AddGroup";
+import AddNewGroup from "./components/AddNewGroup";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 

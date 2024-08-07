@@ -40,23 +40,25 @@ export default function ListGroups() {
   return (
     <>
       <div className="">
-        {memberInGroup !== null
-          ? memberInGroup.map((event) => {
-              return (
-                <div className="groupTile" key={event.id} id={event.id}>
-                  Group name: {event.groupName} <br />
-                  Members:{" "}
-                  {event.users.map((user) => {
-                    if (user.accepted && !user.rejected) {
-                      return user.id;
-                    }
-                  })}{" "}
-                  <br />
-                  <br />
-                </div>
-              );
-            })
-          : <h1>You're not in any groups. Why not make one?</h1>}
+        {memberInGroup !== null ? (
+          memberInGroup.map((event) => {
+            return (
+              <div className="groupTile" key={event.id} id={event.id}>
+                Group name: {event.groupName} <br />
+                Members:{" "}
+                {event.users.map((user) => {
+                  if (user.accepted && !user.rejected) {
+                    return user.id;
+                  }
+                })}{" "}
+                <br />
+                <br />
+              </div>
+            );
+          })
+        ) : (
+          <h1>You're not in any groups. Why not make one?</h1>
+        )}
       </div>
     </>
   );

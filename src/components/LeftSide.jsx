@@ -13,6 +13,7 @@ export default function LeftSide() {
 
   return (
     <>
+      <h1>This is left side component</h1>
       <div className="h-screen flex-col overflow-auto leftside--width text-black">
         <div className="font-bold text-5xl text-center m-16 text-shadow">
           <img className="ml-8 -mb-36 -mt-36 size-10/12" src={logoTwo} />
@@ -38,7 +39,7 @@ export default function LeftSide() {
             <h3 className="pl-3 mt-2 text-3xl">Groups</h3>
           </div>
           <div className=" event-box--height-text-size overflow-auto m-2 p-5 rounded-lg tile-inner-bg">
-            <ListGroups {...{ inputText }} />
+            <ListGroups />
           </div>
         </div>
       </div>
