@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import TimeScheduleList from "./TimeScheduleList";
 import { sessionData } from "../util/util";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;

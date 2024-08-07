@@ -64,7 +64,7 @@ function App() {
               {/* Add Event Button Dialog box */}
               <div>
                 <button
-                  className="p-1 mt-1 text-sm shadow-pink "
+                  className="p-1 mt-1 text-sm shadow-pink"
                   onClick={() => {
                     setDialogContent(<AddNewGroup />);
                     toggleAdd();

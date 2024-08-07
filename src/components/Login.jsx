@@ -147,9 +147,9 @@ export function Login() {
               <p
                 style={{ cursor: "pointer" }}
                 onClick={() => navigate("/register", { replace: true })}
-                className="mt-3 text-center text-sm text-decoration-black"
+                className="mt-3 text-center text-sm text-teal"
               >
-                Register New User{""}
+                Register New User
               </p>
             </div>
           </div>

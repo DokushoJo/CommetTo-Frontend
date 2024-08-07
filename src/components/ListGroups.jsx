@@ -70,7 +70,11 @@ export default function ListGroups() {
         {memberInGroup !== null ? (
           memberInGroup.map((event) => {
             return (
-              <div className="groupTile" key={event.groupId} id={event.groupId}>
+              <div
+                className="bg-pink groupTile"
+                key={event.groupId}
+                id={event.groupId}
+              >
                 Group name: {event.groupName} <br />
                 Members:
                 {event.users.map((user) => {

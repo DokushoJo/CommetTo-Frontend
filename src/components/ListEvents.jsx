@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import * as React from "react";
 import "./ListEvents.css";
-import { setHeader, sessionData, formatDate } from "../util/util";
+import { setHeader, sessionData } from "../util/util";
 const VITE_APP_BASE_URL = import.meta.env.VITE_APP_BASE_URL;
 
 const LISTS_URL = import.meta.env.VITE_APP_BASE_URL + "/all-events/info";
@@ -18,7 +18,7 @@ export default function ListEvents(prop) {
 
   useEffect(() => {
     fetchListEvents();
-  }, [allEventsList]);
+  }, []);
 
   useEffect(() => {
     handleDelete();
@@ -135,7 +135,6 @@ export default function ListEvents(prop) {
                         {event.name}
                       </h2>
                       <br />
-                      <p className="text-center">{formatDate(event.date)}</p>
                       <p className="text-center">{event.description}</p>
                       <br />
                     </div>

@@ -9,10 +9,10 @@ export default function AddNewGroup() {
     description: "",
   });
   const [newGroup, setNewGroup] = useState({
-	group_id: "",
-	group_name: "",
-	created_by_user: ""
-  })
+    group_id: "",
+    group_name: "",
+    created_by_user: "",
+  });
   const [inputText, setInputText] = useState(null);
 
   const handleGroupsData = (key, e) => {
@@ -23,11 +23,10 @@ export default function AddNewGroup() {
   };
 
   const handleSumbitData = async (e) => {
-
     const postObj = {
-        groupName: addData.groupName,
-        description: addData.description,
-      	created_by_user_id: window.localStorage.getItem("id"),
+      groupName: addData.groupName,
+      description: addData.description,
+      created_by_user_id: window.localStorage.getItem("id"),
     };
     e.preventDefault();
 
@@ -39,30 +38,30 @@ export default function AddNewGroup() {
       method: "POST",
       body: JSON.stringify(postObj),
     });
-	const jsonNewGroup = await makeNewGroup.json()
-	console.log(jsonNewGroup)
-	setNewGroup(jsonNewGroup)
+    const jsonNewGroup = await makeNewGroup.json();
+    console.log(jsonNewGroup);
+    setNewGroup(jsonNewGroup);
   };
 
   useEffect(() => {
-	const newInvite = {
-		group_id: newGroup.group_id,
-		users: [newGroup.created_by_user_id],
-		accepted: true,
-		rejected: false
-	}
-	const handleNewInvite = async (newGroup) => {
-		const makeNewInvite = await fetch(BACKEND_URL + "/invitations", {
-			headers: {
-				"Authorization": sessionData().token,
-				"Content-Type": "application/json",
-			  },
-			  method: "POST",
-			  body: JSON.stringify(newInvite)
-		});
-	}
-	handleNewInvite()
-  }, [newGroup])
+    const newInvite = {
+      group_id: newGroup.group_id,
+      users: [newGroup.created_by_user_id],
+      accepted: true,
+      rejected: false,
+    };
+    const handleNewInvite = async (newGroup) => {
+      const makeNewInvite = await fetch(BACKEND_URL + "/invitations", {
+        headers: {
+          Authorization: sessionData().token,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(newInvite),
+      });
+    };
+    handleNewInvite();
+  }, [newGroup]);
 
   function inputHandler(e) {
     const lowerCase = e.target.value.toLowerCase();
