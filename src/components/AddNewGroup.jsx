@@ -1,17 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sessionData } from "../util/util";
 
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export default function AddNewGroup() {
   const [addData, setAddData] = useState({
-    name: "",
-    date: "",
+    groupName: "",
     description: "",
   });
+  const [newGroup, setNewGroup] = useState({
+	group_id: "",
+	group_name: "",
+	created_by_user: ""
+  })
   const [inputText, setInputText] = useState(null);
 
-  const handleEventsData = (key, e) => {
+  const handleGroupsData = (key, e) => {
     e.preventDefault();
     const value = e.target.value;
     const newData = { ...addData, [key]: value };
@@ -19,18 +23,15 @@ export default function AddNewGroup() {
   };
 
   const handleSumbitData = async (e) => {
+
     const postObj = {
-      overview: {
-        name: addData.name,
+        groupName: addData.groupName,
         description: addData.description,
-        date: new Date(addData.date),
-        updated_at: new Date(),
-      },
-      user_id: window.localStorage.getItem("id"),
+      	created_by_user_id: window.localStorage.getItem("id"),
     };
     e.preventDefault();
 
-    await fetch(BACKEND_URL + `/event`, {
+    const makeNewGroup = await fetch(BACKEND_URL + `/groups`, {
       headers: {
         Authorization: sessionData().token,
         "Content-Type": "application/json",
@@ -38,7 +39,30 @@ export default function AddNewGroup() {
       method: "POST",
       body: JSON.stringify(postObj),
     });
+	const jsonNewGroup = await makeNewGroup.json()
+	console.log(jsonNewGroup)
+	setNewGroup(jsonNewGroup)
   };
+
+  useEffect(() => {
+	const newInvite = {
+		group_id: newGroup.group_id,
+		users: [newGroup.created_by_user_id],
+		accepted: true,
+		rejected: false
+	}
+	const handleNewInvite = async (newGroup) => {
+		const makeNewInvite = await fetch(BACKEND_URL + "/invitations", {
+			headers: {
+				"Authorization": sessionData().token,
+				"Content-Type": "application/json",
+			  },
+			  method: "POST",
+			  body: JSON.stringify(newInvite)
+		});
+	}
+	handleNewInvite()
+  }, [newGroup])
 
   function inputHandler(e) {
     const lowerCase = e.target.value.toLowerCase();
@@ -64,8 +88,8 @@ export default function AddNewGroup() {
               ></label>
               <input
                 type="text"
-                value={addData.name}
-                onChange={(e) => handleEventsData("name", e)}
+                value={addData.groupName}
+                onChange={(e) => handleGroupsData("groupName", e)}
                 required
                 placeholder="Group Name"
                 id="small-input"
@@ -98,7 +122,7 @@ export default function AddNewGroup() {
               <textarea
                 type="text"
                 value={addData.description}
-                onChange={(e) => handleEventsData("description", e)}
+                onChange={(e) => handleGroupsData("description", e)}
                 required
                 placeholder="Description"
                 id="small-input"
@@ -109,7 +133,7 @@ export default function AddNewGroup() {
 
             <div>
               <button
-                // onClick={() => submitData()}
+                onClick={() => handleSumbitData()}
                 type="submit"
                 data-twe-ripple-init
                 data-twe-ripple-color="light"
