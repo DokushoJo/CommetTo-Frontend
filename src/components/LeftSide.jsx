@@ -13,11 +13,7 @@ export default function LeftSide() {
 
   return (
     <>
-      <h1>This is left side component</h1>
       <div className="h-screen flex-col overflow-auto leftside--width text-black">
-        <div className="font-bold text-5xl text-center m-16 text-shadow">
-          <img className="ml-8 -mb-36 -mt-36 size-10/12" src={logoTwo} />
-        </div>
         <div className="flex mt-0 mb-5 mx-5 p-3 rounded-lg tile-bg tile-shadow">
           <div className="flex">
             <img
