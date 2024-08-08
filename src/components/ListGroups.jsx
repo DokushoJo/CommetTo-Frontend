@@ -81,7 +81,7 @@ export default function ListGroups() {
           memberInGroup.map((event) => {
             return (
               <div
-                className="bg-pink groupTile"
+                className="bg-pink font-sans groupTile"
                 key={event.groupId}
                 id={event.groupId}
               >
@@ -89,9 +89,7 @@ export default function ListGroups() {
                 Members:
                 {event.users.map((user) => {
                   if (user.accepted && !user.rejected) {
-                    const arr = [];
-                    arr.push(user.username);
-                    return formatList(arr);
+                    return `${user.username} `;
                   }
                 })}
                 <br />

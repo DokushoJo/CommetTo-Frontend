@@ -145,7 +145,9 @@ export default function ListEvents(prop) {
                         {event.name}
                       </h2>
                       <br />
-                      <p className="text-center">{event.description}</p>
+                      <p className="text-center font-sans">
+                        {event.description}
+                      </p>
                       <br />
                     </div>
                     <br />
