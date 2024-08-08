@@ -14,7 +14,7 @@ export default function Comments(props) {
 
   useEffect(() => {
     const handleFetchComments = async () => {
-      const response = await fetch('http://localhost:3100');
+      const response = await fetch('https://commetto-backend-o0z5.onrender.com/');
       const data = await response.json();
       setNotes(data);
     };
