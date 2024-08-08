@@ -16,6 +16,7 @@ export default function ListEvents(prop) {
   const [allEventsList, setAllEventsList] = useState(null);
   const [likesCount, setLikesNumber] = useState(0);
   const [deleteEvent, setDeleteEvent] = useState(null);
+  const [clicked, setClicked] = useState(false);
   const filterd = filterEvents();
   const [dialogContent, setDialogContent] = useState(null); // For comments moda
   const dialogRef = useRef(null);
@@ -73,8 +74,6 @@ export default function ListEvents(prop) {
         },
         method: "DELETE",
       });
-
-      //   await axios.delete(VITE_APP_BASE_URL + "event", deleteEvent);
     } catch (error) {
       return "Invalid Input";
     }
@@ -125,6 +124,17 @@ export default function ListEvents(prop) {
     );
   }
 
+  const [cardStates, setCardStates] = useState({});
+
+  function handleClick(id) {
+    setCardStates((prevCardStates) => ({
+      ...prevCardStates,
+      [id]: {
+        clicked: !prevCardStates[id]?.clicked,
+        likesCount: (prevCardStates[id]?.likesCount || 0) + 1,
+      },
+    }));
+  }
   return (
     <>
       <div>
@@ -155,7 +165,9 @@ export default function ListEvents(prop) {
                         {event.name}
                       </h2>
                       <br />
-                      <p className="text-center">{event.description}</p>
+                      <p className="text-center font-sans">
+                        {event.description}
+                      </p>
                       <br />
                     </div>
                     <br />
@@ -165,10 +177,11 @@ export default function ListEvents(prop) {
                          {IconComments()} </span>
                         <span
                           className="flex flex-column gap-1"
-                          onClick={() => setLikesNumber(likesCount + 1)}
+                          key={event.id}
+                          onClick={() => handleClick(event.id)}
                         >
                           {IconDislike()}
-                          {likesCount}
+                          {cardStates[event.id]?.likesCount || 0}
                         </span>
                       </div>
                     </div>

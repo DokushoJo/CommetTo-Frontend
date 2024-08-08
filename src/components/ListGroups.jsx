@@ -64,6 +64,16 @@ export default function ListGroups() {
     setMemberInGroup(groups);
   }
 
+  function formatList(array) {
+    if (array.length === 0) {
+      return "";
+    } else if (array.length === 1) {
+      return array[0];
+    } else {
+      return array.slice(0, -1).join(", ") + " and " + array[array.length - 1];
+    }
+  }
+
   return (
     <>
       <div className="">
@@ -71,7 +81,7 @@ export default function ListGroups() {
           memberInGroup.map((event) => {
             return (
               <div
-                className="bg-pink groupTile"
+                className="bg-pink font-sans groupTile"
                 key={event.groupId}
                 id={event.groupId}
               >

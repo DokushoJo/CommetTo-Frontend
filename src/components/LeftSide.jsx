@@ -14,10 +14,6 @@ export default function LeftSide() {
       <div className="h-screen flex-col overflow-auto leftside--width text-black">
         <div className="flex mt-0 mb-5 mx-5 p-3 rounded-lg bg-purple tile-shadow border-solid border-8 border-pink">
           <div className="flex">
-            <img
-              src="./../../images/search_icon.png"
-              className="h-7 ml-5 mt-1 pl-2"
-            />
             <h3 className="pl-2.5 text-3xl text-yellow text-center font-bold leading-9 tracking-tight">
               Search
             </h3>
@@ -26,10 +22,9 @@ export default function LeftSide() {
             <SearchBox {...{ inputText, setInputText }}></SearchBox>
           </div>
         </div>
-        <div className="m-5 mb-24 pb-0.5 rounded-lg bg-purple tile-shadow border-solid border-8 border-pink">
-          <div className="m-2 p-3 flex">
-            <img src="./../../images/event_icon.png" className="ml-3 h-8" />
-            <h3 className="pl-2.5 text-3xl text-yellow text-center font-bold leading-9 tracking-tight">
+        <div className="mt-0 mb-5 mx-5 p-3 rounded-lg bg-purple tile-shadow border-solid border-8 border-pink">
+          <div className="flex">
+            <h3 className="pl-2.5 pb-3 text-3xl text-yellow text-center font-bold leading-9 tracking-tight">
               Groups
             </h3>
           </div>

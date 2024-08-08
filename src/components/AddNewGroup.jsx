@@ -1,6 +1,29 @@
 import { useEffect, useState } from "react";
 import { sessionData } from "../util/util";
 
+const createNewGroup = async (groupData) => {
+  const response = await fetch(BACKEND_URL + `/groups`, {
+    headers: {
+      Authorization: sessionData().token,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(groupData),
+  });
+  return response.json();
+};
+
+const createNewInvite = async (inviteData) => {
+  await fetch(BACKEND_URL + "/invitations", {
+    headers: {
+      Authorization: sessionData().token,
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify(inviteData),
+  });
+};
+
 const BACKEND_URL = import.meta.env.VITE_APP_BASE_URL;
 
 export default function AddNewGroup() {
@@ -14,15 +37,17 @@ export default function AddNewGroup() {
     created_by_user: "",
   });
   const [inputText, setInputText] = useState(null);
+  const [invite, setInvite] = useState(null);
 
   const handleGroupsData = (key, e) => {
-    e.preventDefault();
     const value = e.target.value;
     const newData = { ...addData, [key]: value };
     setAddData(newData);
   };
 
   const handleSumbitData = async (e) => {
+    e.preventDefault();
+
     const postObj = {
       groupName: addData.groupName,
       description: addData.description,
@@ -42,6 +67,10 @@ export default function AddNewGroup() {
     console.log(jsonNewGroup);
     setNewGroup(jsonNewGroup);
   };
+  //   const jsonNewGroup = await createNewGroup(postObj);
+  //   console.log(jsonNewGroup)
+  //   setNewGroup(jsonNewGroup)
+  //   };
 
   useEffect(() => {
     const newInvite = {
@@ -61,7 +90,22 @@ export default function AddNewGroup() {
       });
     };
     handleNewInvite();
+
+    if (newGroup && newGroup.group_id) {
+      const newInvite = {
+        group_id: newGroup.group_id,
+        users: [newGroup.created_by_user_id],
+        accepted: true,
+        rejected: false,
+      };
+      setInvite(newInvite);
+      console.log(newInvite);
+    }
   }, [newGroup]);
+
+  useEffect(() => {
+    createNewInvite(invite);
+  }, [invite]);
 
   function inputHandler(e) {
     const lowerCase = e.target.value.toLowerCase();
@@ -132,12 +176,11 @@ export default function AddNewGroup() {
 
             <div>
               <button
-                onClick={() => handleSumbitData()}
                 type="submit"
                 data-twe-ripple-init
                 data-twe-ripple-color="light"
                 className="select-none rounded-lg bg-yellow py-3 px-6 text-center align-middle font-sans text-s font-bold uppercase text-white shadow-md
-								 shadow-gray-600/50 transition-all hover:shadow-lg hover:shadow-amber-600/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
+								 shadow-gray-600/50 transition-all hover:shadow-lg hover:bg-pink focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] 
 								 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
                   				w-32 flex-none  hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"
               >
