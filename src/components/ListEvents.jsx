@@ -79,7 +79,7 @@ export default function ListEvents(prop) {
     }
   };
 
-  const handleClick = (id) => {
+  const handleClickk = (id) => {
     setDialogContent(<CommentSection deleteEvent={id} filterd={filterd} />);
     toggleAdd();
   };
@@ -173,7 +173,7 @@ export default function ListEvents(prop) {
                     <br />
                     <div className="">
                       <div className="flex flex-column gap-96 absolute inset-x-0 bottom-2 left-3">
-                        <span onClick={() => handleClick(event.id)}>
+                        <span onClick={() => handleClickk(event.id)}>
                          {IconComments()} </span>
                         <span
                           className="flex flex-column gap-1"
